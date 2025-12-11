@@ -1,82 +1,110 @@
 import { useEffect, useState } from 'react'
-import axios from 'axios'
+import { Prediction, type PredictionRequest } from '@/models/prediction'
+import { fetchPrediction } from '@/services/predictionService'
 
-interface Prediction {
-  data: {
-    id: string
-    object: string
-    created: number
-    model: string
-    usage: {
-      prompt_tokens: number
-      completion_tokens: number
-      total_tokens: number
-    }
-    choices: Array<{
-      message: {
-        role: string
-        content: string
-      }
-      finish_reason: string
-      index: number
-    }>
-  }
+/**
+ * Result returned by the usePrediction hook.
+ */
+export type UsePredictionResult = {
+  /**
+   * The prediction text ready to be displayed in the UI.
+   */
+  prediction: string
+  /**
+   * Indicates whether the prediction is currently being loaded.
+   */
+  isLoadingPrediction: boolean
 }
 
+/**
+ * Custom hook responsible for requesting an AI prediction
+ * based on league and teams information.
+ *
+ * It calls the local /api/prediction route and maps the response
+ * into a domain model before exposing the final text to the UI.
+ *
+ * The request is only triggered when all arguments are present.
+ * It also avoids state updates after component unmount using a cancel flag.
+ *
+ * @param leagueCountry - The league country.
+ * @param leagueName - The league name.
+ * @param teamHome - The home team name.
+ * @param teamAway - The away team name.
+ * @param date - The match date in YYYY-MM-DD format.
+ * @returns An object with the prediction text and the loading state.
+ */
 const usePrediction = (
   leagueCountry: string,
   leagueName: string,
   teamHome: string,
   teamAway: string,
-  date: string
-) => {
-  const [prediction, setPrediction] = useState('')
+  date: string,
+): UsePredictionResult => {
+  const [predictionModel, setPredictionModel] = useState<Prediction | null>(
+    null,
+  )
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    const fetchPrediction = async () => {
+    // se faltar algum dado, não chama a API
+    if (
+      !leagueCountry ||
+      !leagueName ||
+      !teamHome ||
+      !teamAway ||
+      !date
+    ) {
+      return
+    }
+
+    let cancelled = false
+
+    const fetchData = async () => {
       setIsLoading(true)
+      setPredictionModel(null)
 
       try {
-        const content: string = `Actua como un experto de soccer y revisa las ultimas noticias de Futbol ${leagueCountry} ${leagueName} ${teamHome} vs ${teamAway} el ${date}, analiza paginas de prediccion, despues de un analisis profundo entre jugadores lesionados, quienes son titulares, quien juega de local, ultimos resultados, historicos entre clubes, finalmente arroja 3 predicciones con su respectivo porcentaje estimado, considera estimaciones de handicap asiatico y doble probabilidad, es decir local empate o visitante empate, o +1.5 goles, etc.`
-
-        const options = {
-          method: 'POST',
-          url: 'https://<set RAPIDAPI_URL>/v1/chat/completions', // set: config.publicRuntimeConfig.RAPIDAPI_URL
-          headers: {
-            'content-type': 'application/json',
-            'X-RapidAPI-Key':
-              '', // set: config.publicRuntimeConfig.RAPIDAPI_KEY
-            'X-RapidAPI-Host': '', // set: config.publicRuntimeConfig.RAPIDAPI_URL
-          },
-          data: {
-            model: 'gpt-3.5-turbo',
-            messages: [
-              {
-                role: 'user',
-                content,
-              },
-            ],
-          },
+        const payload: PredictionRequest = {
+          date,
+          leagueCountry,
+          leagueName,
+          teamAway,
+          teamHome,
         }
 
-        const response: Prediction = await axios.request(options)
+        const result = await fetchPrediction(payload)
 
-        setPrediction(response.data.choices[0].message.content)
+        if (!cancelled) {
+          setPredictionModel(result)
+        }
       } catch (error) {
         console.error('Error fetching prediction:', error)
+
+        if (!cancelled) {
+          setPredictionModel(
+            new Prediction({
+              text:
+                'Não foi possível gerar a previsão no momento. Tente novamente mais tarde.',
+            }),
+          )
+        }
       } finally {
-        setIsLoading(false)
+        if (!cancelled) {
+          setIsLoading(false)
+        }
       }
     }
 
-    if (leagueCountry && leagueName && teamHome && teamAway && date) {
-      fetchPrediction()
+    void fetchData()
+
+    // evita setState depois do unmount
+    return () => {
+      cancelled = true
     }
   }, [leagueCountry, leagueName, teamHome, teamAway, date])
 
   return {
-    prediction,
+    prediction: predictionModel?.text ?? '',
     isLoadingPrediction: isLoading,
   }
 }

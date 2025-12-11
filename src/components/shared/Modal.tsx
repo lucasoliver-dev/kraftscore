@@ -1,33 +1,72 @@
-import React from 'react'
+'use client'
 
-interface Props {
+import type { ReactNode } from 'react'
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from '@/components/ui/dialog'
+import { Button } from '@/components/ui/button'
+
+/**
+ * Props for the Modal component.
+ */
+export type ModalProps = {
+  /**
+   * Modal content to be rendered inside the body.
+   */
+  children: ReactNode
+  /**
+   * Controls whether the modal is visible.
+   */
   isOpen: boolean
+  /**
+   * Callback invoked when the modal is requested to close.
+   */
   onClose: () => void
-  children: React.ReactNode
 }
 
-const Modal: React.FC<Props> = ({ isOpen, onClose, children }) => {
-  if (!isOpen) return null
-
+/**
+ * Generic modal component used to display the AI prediction
+ * or any other content in a centered overlay.
+ *
+ * Internally it uses the shadcn/ui Dialog component.
+ *
+ * @param props - The component props.
+ */
+const Modal = ({ children, isOpen, onClose }: ModalProps) => {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white p-6 rounded-md shadow-md w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-4">Prediction</h2>
-        <hr className="border-gray-300" />
-        <div className="max-h-96 overflow-y-auto">
-          <div className="mb-4">{children}</div>
-        </div>
-        <hr className="border-gray-300" />
-        <div className="mt-4 flex justify-end">
-          <button
-            className="bg-red-500 text-white px-4 py-2 rounded-md"
+    <Dialog open={isOpen} onOpenChange={() => onClose()}>
+      <DialogContent
+        className="
+          max-h-[80vh] max-w-2xl overflow-y-auto
+          border border-orange-500/40
+          bg-zinc-950 text-zinc-50
+          shadow-[0_0_40px_rgba(249,115,22,0.45)]
+        "
+      >
+        <DialogHeader>
+          <DialogTitle className="text-lg font-semibold text-orange-400">
+            Análise com IA
+          </DialogTitle>
+        </DialogHeader>
+
+        <div className="mb-4">{children}</div>
+
+        <DialogFooter>
+          <Button
+            type="button"
+            variant="outline"
+            className="border-orange-500/60 text-orange-400 hover:bg-orange-500 hover:text-zinc-950"
             onClick={onClose}
           >
-            Close
-          </button>
-        </div>
-      </div>
-    </div>
+            Fechar
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   )
 }
 

@@ -31,16 +31,16 @@ export const clamp0to100 = (value: number): number => {
 export const extractWinProbabilities = (
   prediction: string,
   teamHome: string,
-  teamAway: string,
+  teamAway: string
 ): { homeWinProb: number; awayWinProb: number } => {
   const text = prediction.replace(/\s+/g, ' ')
 
   const winMatch = text.match(
-    /Mercado Sugerido:\s*Vit[oó]ria do\s+([A-Za-zÀ-ÿ0-9\s\-]+)/i,
+    /Mercado Sugerido:\s*Vit[oó]ria do\s+([A-Za-zÀ-ÿ0-9\s\-]+)/i
   )
 
   const percentMatch = text.match(
-    /Porcentagem Estimada de Acerto:\s*(\d+)\s*%/i,
+    /Porcentagem Estimada de Acerto:\s*(\d+)\s*%/i
   )
 
   if (!winMatch || !percentMatch) {
@@ -56,10 +56,8 @@ export const extractWinProbabilities = (
     ? Math.max(0, Math.min(rawPercent, 90))
     : 60
 
-  const winnerIsHome =
-    winnerName.toLowerCase().includes(teamHome.toLowerCase())
-  const winnerIsAway =
-    winnerName.toLowerCase().includes(teamAway.toLowerCase())
+  const winnerIsHome = winnerName.toLowerCase().includes(teamHome.toLowerCase())
+  const winnerIsAway = winnerName.toLowerCase().includes(teamAway.toLowerCase())
 
   if (winnerIsHome) {
     return {
@@ -84,9 +82,7 @@ export const extractWinProbabilities = (
 /**
  * Extracts a numeric summary for attack/defense/form.
  */
-export const extractStatSummary = (
-  prediction: string,
-): MatchStatsSummary => {
+export const extractStatSummary = (prediction: string): MatchStatsSummary => {
   const homeRegex =
     /Time da casa\s*\([^)]+\):\s*Ataque:\s*(\d+)\/100,\s*Defesa:\s*(\d+)\/100,\s*Forma recente:\s*(\d+)\/100/i
 
@@ -121,7 +117,7 @@ export const extractStatSummary = (
 export const guessScore = (
   prediction: string,
   homeIsFav: boolean,
-  awayIsFav: boolean,
+  awayIsFav: boolean
 ): ScoreGuess => {
   const hasUnder25 = /Menos de 2\.5 gols|Under 2\.5/i.test(prediction)
   const hasOver25 = /Mais de 2\.5 gols|Over 2\.5/i.test(prediction)
@@ -169,6 +165,6 @@ export const getInitials = (name: string): string => {
     .split(' ')
     .filter(Boolean)
     .slice(0, 2)
-    .map((part) => part[0]?.toUpperCase() ?? '')
+    .map(part => part[0]?.toUpperCase() ?? '')
     .join('')
 }

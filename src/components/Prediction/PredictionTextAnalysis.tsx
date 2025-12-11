@@ -9,9 +9,7 @@ export type PredictionTextAnalysisProps = {
 /**
  * Renders the detailed textual analysis section using markdown.
  */
-const PredictionTextAnalysis = ({
-  markdown,
-}: PredictionTextAnalysisProps) => (
+const PredictionTextAnalysis = ({ markdown }: PredictionTextAnalysisProps) => (
   <section className="space-y-3">
     <div className="flex items-center gap-2">
       <Brain className="h-4 w-4 text-orange-400" />
@@ -28,19 +26,13 @@ const PredictionTextAnalysis = ({
           </h3>
         ),
         p: ({ children }) => (
-          <p className="text-sm leading-relaxed text-zinc-300">
-            {children}
-          </p>
+          <p className="text-sm leading-relaxed text-zinc-300">{children}</p>
         ),
         li: ({ children }) => (
-          <li className="text-sm leading-relaxed text-zinc-300">
-            {children}
-          </li>
+          <li className="text-sm leading-relaxed text-zinc-300">{children}</li>
         ),
         strong: ({ children }) => (
-          <span className="font-semibold text-zinc-100">
-            {children}
-          </span>
+          <span className="font-semibold text-zinc-100">{children}</span>
         ),
       }}
     >

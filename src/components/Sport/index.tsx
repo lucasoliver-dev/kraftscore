@@ -19,7 +19,7 @@ const Sport = () => {
    */
   const handleFormSubmit = async (
     selectedSport: string,
-    selectedDate: string,
+    selectedDate: string
   ) => {
     setSport(selectedSport)
     setDate(selectedDate)

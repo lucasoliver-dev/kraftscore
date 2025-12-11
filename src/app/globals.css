@@ -28,7 +28,7 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --radius: 0.5rem
+    --radius: 0.5rem;
   }
   .dark {
     --background: 224 71.4% 4.1%;
@@ -54,7 +54,7 @@
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%
+    --chart-5: 340 75% 55%;
   }
 }
 
@@ -96,9 +96,9 @@
 .kbet-orb {
   position: absolute;
   border-radius: 9999px;
-  filter: blur(20px);          /* menos blur para aparecer mais */
-  opacity: 0.8;                /* bem mais visível */
-  mix-blend-mode: normal;      /* tira o screen por enquanto */
+  filter: blur(20px); /* menos blur para aparecer mais */
+  opacity: 0.8; /* bem mais visível */
+  mix-blend-mode: normal; /* tira o screen por enquanto */
 }
 
 /* Orb laranja neon (cor principal do app) */
@@ -156,9 +156,17 @@
   inset: 0;
   opacity: 0.22; /* mais forte para ver melhor */
   pointer-events: none;
-  background-image:
-    radial-gradient(circle at 0 0, transparent 0, transparent 16px, rgba(24, 24, 27, 1) 17px),
-    radial-gradient(circle at 24px 14px, rgba(39, 39, 42, 0.95) 0, rgba(10, 10, 10, 1) 17px);
+  background-image: radial-gradient(
+      circle at 0 0,
+      transparent 0,
+      transparent 16px,
+      rgba(24, 24, 27, 1) 17px
+    ),
+    radial-gradient(
+      circle at 24px 14px,
+      rgba(39, 39, 42, 0.95) 0,
+      rgba(10, 10, 10, 1) 17px
+    );
   background-size: 48px 42px;
   mix-blend-mode: soft-light;
 }

@@ -30,9 +30,9 @@ const PredictionResultIndicators = ({
       </div>
 
       <p className="mb-2 text-xs text-zinc-400">
-        Barras representam uma estimativa simples da chance de vitória
-        baseada nas previsões da IA. Verde indica favorito, vermelho o
-        lado menos provável.
+        Barras representam uma estimativa simples da chance de vitória baseada
+        nas previsões da IA. Verde indica favorito, vermelho o lado menos
+        provável.
       </p>
 
       <div className="space-y-4 text-xs">
@@ -64,23 +64,14 @@ type TeamProbRowProps = {
 /**
  * Row with a label and probability bar.
  */
-const TeamProbRow = ({
-  isFav,
-  label,
-  prob,
-  side,
-}: TeamProbRowProps) => (
+const TeamProbRow = ({ isFav, label, prob, side }: TeamProbRowProps) => (
   <div className="space-y-1">
     <div className="flex items-center justify-between">
       <span className="font-semibold text-zinc-100">
         {label}{' '}
-        <span className="text-[10px] uppercase text-zinc-500">
-          ({side})
-        </span>
+        <span className="text-[10px] uppercase text-zinc-500">({side})</span>
       </span>
-      <span className="text-[11px] text-zinc-400">
-        {prob.toFixed(0)}%
-      </span>
+      <span className="text-[11px] text-zinc-400">{prob.toFixed(0)}%</span>
     </div>
     <div className="h-2 w-full rounded-full bg-zinc-800">
       <div

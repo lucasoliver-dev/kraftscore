@@ -31,8 +31,8 @@ const PredictionPerformance = ({
       </div>
 
       <p className="text-xs text-zinc-400">
-        Barras representam força de ataque, defesa e forma recente em
-        uma escala simples de 0 a 100, com base na análise da IA.
+        Barras representam força de ataque, defesa e forma recente em uma escala
+        simples de 0 a 100, com base na análise da IA.
       </p>
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -40,9 +40,7 @@ const PredictionPerformance = ({
           <div className="space-y-3 rounded-md border border-zinc-700 bg-zinc-950/60 p-3">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-xs uppercase text-zinc-500">
-                  Time da casa
-                </p>
+                <p className="text-xs uppercase text-zinc-500">Time da casa</p>
                 <p className="text-sm font-semibold text-zinc-100">
                   {teamHome}
                 </p>
@@ -122,12 +120,7 @@ type StatBarProps = {
 /**
  * Small reusable stat bar component used in the performance section.
  */
-const StatBar = ({
-  barClassName,
-  icon,
-  label,
-  value,
-}: StatBarProps) => (
+const StatBar = ({ barClassName, icon, label, value }: StatBarProps) => (
   <div className="space-y-1">
     <div className="flex items-center justify-between text-xs">
       <div className="flex items-center gap-1">

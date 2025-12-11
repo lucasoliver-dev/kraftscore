@@ -33,16 +33,16 @@ Web application that allows users to get soccer match predictions using the Chat
 
 2. Clone this repository:
 
-```git clone https://github.com/your-username/your-repository.git```
+`git clone https://github.com/your-username/your-repository.git`
 
 3. Install dependencies:
 
-```npm install```
+`npm install`
 
 4. Create a new file `.env.local` and set the required environment variables. You can use the `.env.example` file as a reference.
 
 5. Start the development server:
-  
-  ```npm run dev```
+
+`npm run dev`
 
 6. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

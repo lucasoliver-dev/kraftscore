@@ -58,9 +58,7 @@ const SportForm = ({ onSubmitForm }: SportFormProps) => {
    *
    * @param event - The change event.
    */
-  const handleSportChange = (
-    event: React.ChangeEvent<HTMLSelectElement>,
-  ) => {
+  const handleSportChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setValues((current: SportFormValues) => ({
       ...current,
       sport: event.target.value,
@@ -87,9 +85,7 @@ const SportForm = ({ onSubmitForm }: SportFormProps) => {
    *
    * @param event - The submit event.
    */
-  const handleSubmit = async (
-    event: React.FormEvent<HTMLFormElement>,
-  ) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
     const result = schema.safeParse(values)
@@ -106,7 +102,7 @@ const SportForm = ({ onSubmitForm }: SportFormProps) => {
       }
     } else {
       const errorMessages = result.error.issues.map(
-        (issue: { message: string }) => issue.message,
+        (issue: { message: string }) => issue.message
       )
       setErrors(errorMessages)
     }

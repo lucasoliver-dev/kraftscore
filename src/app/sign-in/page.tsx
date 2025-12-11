@@ -24,7 +24,8 @@ const SignInPage = () => (
 
             <p className="mt-2 max-w-md text-sm text-zinc-400">
               Use análises profundas, feitas com dados estratégicos e
-              processadas por supercomputadores, para fortalecer sua leitura de jogo antes de apostar.
+              processadas por supercomputadores, para fortalecer sua leitura de
+              jogo antes de apostar.
             </p>
           </div>
 

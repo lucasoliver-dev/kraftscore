@@ -58,13 +58,11 @@ const Header = () => (
                   'border border-orange-500/40 bg-zinc-900/95 text-zinc-50 shadow-[0_0_30px_rgba(249,115,22,0.35)] backdrop-blur-sm',
                 userButtonPopoverHeaderTitle:
                   'text-sm font-semibold text-zinc-50',
-                userButtonPopoverHeaderSubtitle:
-                  'text-xs text-zinc-400',
+                userButtonPopoverHeaderSubtitle: 'text-xs text-zinc-400',
                 userButtonPopoverActionButton:
                   'flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-zinc-100 hover:bg-zinc-800',
                 userButtonPopoverActionButtonIcon: 'text-zinc-400',
-                userButtonPopoverActionButtonText:
-                  'text-xs text-zinc-100',
+                userButtonPopoverActionButtonText: 'text-xs text-zinc-100',
                 userButtonPopoverFooter: 'hidden',
               },
             }}

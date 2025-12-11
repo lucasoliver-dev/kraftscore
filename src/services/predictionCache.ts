@@ -39,10 +39,7 @@ const predictionCache = new Map<string, PredictionCacheEntry>()
  * @returns Lower-cased, trimmed, space-collapsed string.
  */
 const normalize = (value: string): string =>
-  value
-    .trim()
-    .toLowerCase()
-    .replace(/\s+/g, ' ')
+  value.trim().toLowerCase().replace(/\s+/g, ' ')
 
 /**
  * Builds a cache key from prediction parameters.
@@ -68,7 +65,7 @@ const buildCacheKey = (params: PredictionKeyParams): string => {
  * @returns Cached prediction string or null.
  */
 export const getCachedPrediction = (
-  params: PredictionKeyParams,
+  params: PredictionKeyParams
 ): string | null => {
   const key = buildCacheKey(params)
   const entry = predictionCache.get(key)
@@ -77,8 +74,7 @@ export const getCachedPrediction = (
     return null
   }
 
-  const isExpired =
-    Date.now() - entry.createdAt > CACHE_TTL_MS
+  const isExpired = Date.now() - entry.createdAt > CACHE_TTL_MS
 
   if (isExpired) {
     predictionCache.delete(key)
@@ -96,7 +92,7 @@ export const getCachedPrediction = (
  */
 export const setCachedPrediction = (
   params: PredictionKeyParams,
-  prediction: string,
+  prediction: string
 ): void => {
   const key = buildCacheKey(params)
 

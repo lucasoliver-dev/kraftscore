@@ -38,22 +38,16 @@ const usePrediction = (
   leagueName: string,
   teamHome: string,
   teamAway: string,
-  date: string,
+  date: string
 ): UsePredictionResult => {
   const [predictionModel, setPredictionModel] = useState<Prediction | null>(
-    null,
+    null
   )
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     // se faltar algum dado, não chama a API
-    if (
-      !leagueCountry ||
-      !leagueName ||
-      !teamHome ||
-      !teamAway ||
-      !date
-    ) {
+    if (!leagueCountry || !leagueName || !teamHome || !teamAway || !date) {
       return
     }
 
@@ -83,9 +77,8 @@ const usePrediction = (
         if (!cancelled) {
           setPredictionModel(
             new Prediction({
-              text:
-                'Não foi possível gerar a previsão no momento. Tente novamente mais tarde.',
-            }),
+              text: 'Não foi possível gerar a previsão no momento. Tente novamente mais tarde.',
+            })
           )
         }
       } finally {

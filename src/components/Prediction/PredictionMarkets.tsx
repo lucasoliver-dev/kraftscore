@@ -26,9 +26,7 @@ const PredictionMarkets = ({ markdown }: PredictionMarketsProps) => (
           </h3>
         ),
         p: ({ children }) => (
-          <p className="text-sm leading-relaxed text-zinc-300">
-            {children}
-          </p>
+          <p className="text-sm leading-relaxed text-zinc-300">{children}</p>
         ),
         li: ({ children }) => (
           <li className="flex items-start gap-2 text-sm leading-relaxed text-zinc-300">
@@ -37,9 +35,7 @@ const PredictionMarkets = ({ markdown }: PredictionMarketsProps) => (
           </li>
         ),
         strong: ({ children }) => (
-          <span className="font-semibold text-zinc-100">
-            {children}
-          </span>
+          <span className="font-semibold text-zinc-100">{children}</span>
         ),
       }}
     >

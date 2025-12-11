@@ -38,8 +38,7 @@ const PredictionScoreGuess = ({
           Placar sugerido
         </span>
         <div className="rounded-md border border-orange-500/60 bg-zinc-900 px-4 py-2 text-2xl font-semibold tracking-widest text-orange-400">
-          {guess.homeGoals}{' '}
-          <span className="text-zinc-500">x</span>{' '}
+          {guess.homeGoals} <span className="text-zinc-500">x</span>{' '}
           {guess.awayGoals}
         </div>
       </div>
@@ -48,9 +47,9 @@ const PredictionScoreGuess = ({
     </div>
 
     <p className="text-[10px] text-zinc-500">
-      Este palpite de placar é derivado da análise geral da IA
-      (favorito, tendência de gols e forma recente). Use sempre em
-      conjunto com a sua própria leitura de jogo e gestão de banca.
+      Este palpite de placar é derivado da análise geral da IA (favorito,
+      tendência de gols e forma recente). Use sempre em conjunto com a sua
+      própria leitura de jogo e gestão de banca.
     </p>
   </section>
 )

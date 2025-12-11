@@ -106,16 +106,16 @@ const clamp0to100 = (value: number): number => {
 const extractWinProbabilities = (
   prediction: string,
   teamHome: string,
-  teamAway: string,
+  teamAway: string
 ): { homeWinProb: number; awayWinProb: number } => {
   const text = prediction.replace(/\s+/g, ' ')
 
   const winMatch = text.match(
-    /Mercado Sugerido:\s*Vit[oó]ria do\s+([A-Za-zÀ-ÿ0-9\s\-]+)/i,
+    /Mercado Sugerido:\s*Vit[oó]ria do\s+([A-Za-zÀ-ÿ0-9\s\-]+)/i
   )
 
   const percentMatch = text.match(
-    /Porcentagem Estimada de Acerto:\s*(\d+)\s*%/i,
+    /Porcentagem Estimada de Acerto:\s*(\d+)\s*%/i
   )
 
   if (!winMatch || !percentMatch) {
@@ -131,10 +131,8 @@ const extractWinProbabilities = (
     ? Math.max(0, Math.min(rawPercent, 90))
     : 60
 
-  const winnerIsHome =
-    winnerName.toLowerCase().includes(teamHome.toLowerCase())
-  const winnerIsAway =
-    winnerName.toLowerCase().includes(teamAway.toLowerCase())
+  const winnerIsHome = winnerName.toLowerCase().includes(teamHome.toLowerCase())
+  const winnerIsAway = winnerName.toLowerCase().includes(teamAway.toLowerCase())
 
   if (winnerIsHome) {
     return {
@@ -200,7 +198,7 @@ const extractStatSummary = (prediction: string): MatchStatsSummary => {
 const guessScore = (
   prediction: string,
   homeIsFav: boolean,
-  awayIsFav: boolean,
+  awayIsFav: boolean
 ): ScoreGuess => {
   const hasUnder25 = /Menos de 2\.5 gols|Under 2\.5/i.test(prediction)
   const hasOver25 = /Mais de 2\.5 gols|Over 2\.5/i.test(prediction)
@@ -289,8 +287,8 @@ const StatBar = ({
     tone === 'orange'
       ? 'bg-orange-500'
       : tone === 'sky'
-        ? 'bg-sky-500'
-        : 'bg-amber-400'
+      ? 'bg-sky-500'
+      : 'bg-amber-400'
 
   return (
     <div className="space-y-1">
@@ -358,7 +356,7 @@ const PredictionInlineSummary = ({
 
   const relativeTime = useMemo(
     () => formatRelativeTimeFromIso(generatedAt),
-    [generatedAt],
+    [generatedAt]
   )
 
   return (
@@ -379,7 +377,7 @@ const PredictionInlineSummary = ({
         <button
           type="button"
           className="inline-flex items-center gap-1 rounded-full border border-zinc-700 bg-zinc-900 px-2 py-1 text-[10px] font-medium text-zinc-300 hover:border-orange-500 hover:text-orange-400"
-          onClick={() => setIsExpanded((current) => !current)}
+          onClick={() => setIsExpanded(current => !current)}
         >
           {isExpanded ? 'Esconder detalhes' : 'Ver detalhes'}
           {isExpanded ? (
@@ -398,8 +396,7 @@ const PredictionInlineSummary = ({
           </span>
 
           <div className="rounded-md border border-orange-500/60 bg-zinc-900 px-3 py-1.5 text-lg font-semibold tracking-widest text-orange-400">
-            {scoreGuess.homeGoals}{' '}
-            <span className="text-zinc-500">x</span>{' '}
+            {scoreGuess.homeGoals} <span className="text-zinc-500">x</span>{' '}
             {scoreGuess.awayGoals}
           </div>
 
@@ -411,12 +408,8 @@ const PredictionInlineSummary = ({
         <div className="flex-1 space-y-2">
           <div className="space-y-1">
             <div className="flex items-center justify-between text-[11px]">
-              <span className="font-medium text-zinc-200">
-                {teamHome}
-              </span>
-              <span className="text-zinc-400">
-                {homeWinProb.toFixed(0)}%
-              </span>
+              <span className="font-medium text-zinc-200">{teamHome}</span>
+              <span className="text-zinc-400">{homeWinProb.toFixed(0)}%</span>
             </div>
             <div className="h-1.5 w-full rounded-full bg-zinc-800">
               <div
@@ -430,12 +423,8 @@ const PredictionInlineSummary = ({
 
           <div className="space-y-1">
             <div className="flex items-center justify-between text-[11px]">
-              <span className="font-medium text-zinc-200">
-                {teamAway}
-              </span>
-              <span className="text-zinc-400">
-                {awayWinProb.toFixed(0)}%
-              </span>
+              <span className="font-medium text-zinc-200">{teamAway}</span>
+              <span className="text-zinc-400">{awayWinProb.toFixed(0)}%</span>
             </div>
             <div className="h-1.5 w-full rounded-full bg-zinc-800">
               <div
@@ -449,39 +438,34 @@ const PredictionInlineSummary = ({
         </div>
       </div>
 
-            {/* High-level textual summary based on probabilities */}
+      {/* High-level textual summary based on probabilities */}
       <p className="mt-2 text-[10px] leading-relaxed text-zinc-500">
         {homeIsFav && !awayIsFav && (
           <>
             A IA enxerga uma leve vantagem para{' '}
-            <span className="font-semibold text-zinc-300">
-              {teamHome}
-            </span>
-            , mas sem descartar o potencial de {teamAway}.
+            <span className="font-semibold text-zinc-300">{teamHome}</span>, mas
+            sem descartar o potencial de {teamAway}.
           </>
         )}
 
         {awayIsFav && !homeIsFav && (
           <>
             A análise indica{' '}
-            <span className="font-semibold text-zinc-300">
-              {teamAway}
-            </span>{' '}
-            como lado mais forte, mesmo jogando fora, enquanto{' '}
-            {teamHome} precisa de mais eficiência para surpreender.
+            <span className="font-semibold text-zinc-300">{teamAway}</span> como
+            lado mais forte, mesmo jogando fora, enquanto {teamHome} precisa de
+            mais eficiência para surpreender.
           </>
         )}
 
         {!homeIsFav && !awayIsFav && (
           <>
-            As probabilidades estão bem equilibradas, sugerindo um
-            confronto aberto em que pequenos detalhes podem decidir o
-            resultado.
+            As probabilidades estão bem equilibradas, sugerindo um confronto
+            aberto em que pequenos detalhes podem decidir o resultado.
           </>
         )}
       </p>
 
-            {/* Collapsible detailed stats */}
+      {/* Collapsible detailed stats */}
       {isExpanded && (
         <>
           <div className="mt-3 grid gap-3 sm:grid-cols-2">
@@ -498,11 +482,7 @@ const PredictionInlineSummary = ({
                   tone="orange"
                   value={stats.home.attack}
                 />
-                <StatBar
-                  label="Defesa"
-                  tone="sky"
-                  value={stats.home.defense}
-                />
+                <StatBar label="Defesa" tone="sky" value={stats.home.defense} />
                 <StatBar
                   label="Forma recente"
                   tone="amber"
@@ -524,11 +504,7 @@ const PredictionInlineSummary = ({
                   tone="orange"
                   value={stats.away.attack}
                 />
-                <StatBar
-                  label="Defesa"
-                  tone="sky"
-                  value={stats.away.defense}
-                />
+                <StatBar label="Defesa" tone="sky" value={stats.away.defense} />
                 <StatBar
                   label="Forma recente"
                   tone="amber"
@@ -539,10 +515,10 @@ const PredictionInlineSummary = ({
           </div>
 
           <p className="mt-2 text-[10px] leading-relaxed text-zinc-500">
-            Ataque indica capacidade de criar e converter chances; defesa
-            mede a solidez sem a bola; e forma recente resume o momento
-            geral das equipes nos últimos jogos. Use esses números como
-            um radar rápido de tendência, e não como verdade absoluta.
+            Ataque indica capacidade de criar e converter chances; defesa mede a
+            solidez sem a bola; e forma recente resume o momento geral das
+            equipes nos últimos jogos. Use esses números como um radar rápido de
+            tendência, e não como verdade absoluta.
           </p>
         </>
       )}
@@ -565,9 +541,7 @@ const PredictionInlineSummary = ({
               onClick={onRefreshClick}
             >
               <RefreshCw
-                className={`h-3 w-3 ${
-                  isRefreshing ? 'animate-spin' : ''
-                }`}
+                className={`h-3 w-3 ${isRefreshing ? 'animate-spin' : ''}`}
               />
               {isRefreshing ? 'Atualizando...' : 'Atualizar análise'}
             </button>

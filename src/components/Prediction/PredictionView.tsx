@@ -43,9 +43,7 @@ const PredictionView = ({
   const marker = '### Previsões'
   const hasMarker = trimmed.includes(marker)
 
-  const analysisMarkdown = hasMarker
-    ? trimmed.split(marker)[0]
-    : trimmed
+  const analysisMarkdown = hasMarker ? trimmed.split(marker)[0] : trimmed
 
   const predictionsMarkdown = hasMarker
     ? `${marker}${trimmed.split(marker)[1]}`
@@ -54,7 +52,7 @@ const PredictionView = ({
   const { homeWinProb, awayWinProb } = extractWinProbabilities(
     trimmed,
     teamHome,
-    teamAway,
+    teamAway
   )
 
   const stats = extractStatSummary(trimmed)
@@ -106,8 +104,8 @@ const PredictionView = ({
       {!predictionsMarkdown && (
         <p className="text-xs text-zinc-500">
           Esta análise foi gerada automaticamente pela IA com base nas
-          informações recentes das equipes. Use sempre em conjunto com
-          sua própria leitura de jogo.
+          informações recentes das equipes. Use sempre em conjunto com sua
+          própria leitura de jogo.
         </p>
       )}
     </div>

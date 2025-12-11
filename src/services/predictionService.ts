@@ -13,11 +13,11 @@ import {
  * @returns A promise that resolves to a Prediction instance.
  */
 export async function fetchPrediction(
-  payload: PredictionRequest,
+  payload: PredictionRequest
 ): Promise<Prediction> {
   const { data } = await axios.post<PredictionSource>(
     '/api/prediction',
-    payload,
+    payload
   )
 
   return Prediction.copyFrom(data)

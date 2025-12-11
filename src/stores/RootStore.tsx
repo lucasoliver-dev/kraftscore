@@ -1,11 +1,6 @@
 'use client'
 
-import React, {
-  createContext,
-  useContext,
-  useRef,
-  type ReactNode,
-} from 'react'
+import React, { createContext, useContext, useRef, type ReactNode } from 'react'
 import { FootballStore } from '@/stores/FootballStore'
 import { PredictionStore } from '@/stores/PredictionStore'
 

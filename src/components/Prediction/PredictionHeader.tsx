@@ -23,9 +23,7 @@ const PredictionHeader = ({
     <div className="mb-2 flex items-center gap-3">
       <Brain className="h-5 w-5 text-orange-400" />
       <div className="text-sm">
-        <p className="text-xs uppercase text-zinc-400">
-          Análise da partida
-        </p>
+        <p className="text-xs uppercase text-zinc-400">Análise da partida</p>
         <p className="text-sm font-semibold">
           {teamHome} x {teamAway}
         </p>
@@ -34,22 +32,14 @@ const PredictionHeader = ({
 
     <div className="grid grid-cols-1 gap-2 text-xs text-zinc-400 sm:grid-cols-3">
       <div>
-        <span className="font-semibold text-zinc-100">
-          Liga:
-        </span>{' '}
-        {leagueName}
+        <span className="font-semibold text-zinc-100">Liga:</span> {leagueName}
       </div>
       <div>
-        <span className="font-semibold text-zinc-100">
-          País:
-        </span>{' '}
+        <span className="font-semibold text-zinc-100">País:</span>{' '}
         {leagueCountry}
       </div>
       <div>
-        <span className="font-semibold text-zinc-100">
-          Data:
-        </span>{' '}
-        {date}
+        <span className="font-semibold text-zinc-100">Data:</span> {date}
       </div>
     </div>
   </section>

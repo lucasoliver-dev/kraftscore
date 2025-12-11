@@ -131,6 +131,6 @@ export class Fixture {
    * @returns A list of Fixture domain model instances.
    */
   static specialize(payload: ApiFootballResponse<FixtureSource>): Fixture[] {
-    return payload.response.map((item) => Fixture.copyFrom(item))
+    return payload.response.map(item => Fixture.copyFrom(item))
   }
 }

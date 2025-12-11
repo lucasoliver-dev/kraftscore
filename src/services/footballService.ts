@@ -5,10 +5,8 @@ import {
   Fixture,
 } from '@/models/football'
 
-const API_FOOTBALL_HOST =
-  process.env.NEXT_PUBLIC_API_FOOTBALL_HOST as string
-const API_FOOTBALL_KEY =
-  process.env.NEXT_PUBLIC_API_FOOTBALL_KEY as string
+const API_FOOTBALL_HOST = process.env.NEXT_PUBLIC_API_FOOTBALL_HOST as string
+const API_FOOTBALL_KEY = process.env.NEXT_PUBLIC_API_FOOTBALL_KEY as string
 
 /**
  * Axios instance configured to communicate with the API-Football service.
@@ -34,7 +32,7 @@ export async function fetchFixturesByDate(date: string): Promise<Fixture[]> {
     '/fixtures',
     {
       params: { date },
-    },
+    }
   )
 
   return Fixture.specialize(data)

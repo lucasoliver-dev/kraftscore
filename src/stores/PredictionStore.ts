@@ -89,8 +89,7 @@ export class PredictionStore {
         for (const record of parsed) {
           if (!record?.fixtureId) continue
 
-          const createdAt =
-            record.createdAt ?? new Date().toISOString()
+          const createdAt = record.createdAt ?? new Date().toISOString()
 
           const normalized: StoredPrediction = {
             createdAt,
@@ -103,17 +102,11 @@ export class PredictionStore {
             teamHome: record.teamHome,
           }
 
-          this.predictionsByFixtureId.set(
-            normalized.fixtureId,
-            normalized,
-          )
+          this.predictionsByFixtureId.set(normalized.fixtureId, normalized)
         }
       })
     } catch (error) {
-      console.error(
-        '[PredictionStore] Failed to hydrate from storage',
-        error,
-      )
+      console.error('[PredictionStore] Failed to hydrate from storage', error)
     }
   }
 
@@ -127,10 +120,7 @@ export class PredictionStore {
       const payload = Array.from(this.predictionsByFixtureId.values())
       window.localStorage.setItem(STORAGE_KEY, JSON.stringify(payload))
     } catch (error) {
-      console.error(
-        '[PredictionStore] Failed to save to storage',
-        error,
-      )
+      console.error('[PredictionStore] Failed to save to storage', error)
     }
   }
 
@@ -156,10 +146,7 @@ export class PredictionStore {
       teamHome: record.teamHome,
     }
 
-    this.predictionsByFixtureId.set(
-      normalized.fixtureId,
-      normalized,
-    )
+    this.predictionsByFixtureId.set(normalized.fixtureId, normalized)
     this.saveToStorage()
   }
 }

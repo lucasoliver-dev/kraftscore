@@ -31,22 +31,19 @@ const Fixture = ({ date }: FixtureProps) => {
   const [selectedFixtureId, setSelectedFixtureId] = useState<
     number | string | null
   >(null)
-  const [selectedLeagueCountry, setSelectedLeagueCountry] =
-    useState('')
+  const [selectedLeagueCountry, setSelectedLeagueCountry] = useState('')
   const [selectedLeagueName, setSelectedLeagueName] = useState('')
   const [selectedTeamAway, setSelectedTeamAway] = useState('')
-  const [selectedTeamAwayLogo, setSelectedTeamAwayLogo] =
-    useState('')
+  const [selectedTeamAwayLogo, setSelectedTeamAwayLogo] = useState('')
   const [selectedTeamHome, setSelectedTeamHome] = useState('')
-  const [selectedTeamHomeLogo, setSelectedTeamHomeLogo] =
-    useState('')
+  const [selectedTeamHomeLogo, setSelectedTeamHomeLogo] = useState('')
 
   const { prediction, isLoadingPrediction } = usePrediction(
     selectedLeagueCountry,
     selectedLeagueName,
     selectedTeamHome,
     selectedTeamAway,
-    selectedDate,
+    selectedDate
   )
 
   useEffect(() => {
@@ -140,8 +137,7 @@ const Fixture = ({ date }: FixtureProps) => {
     const year = d.getFullYear()
     const monthNumber = d.getMonth() + 1
     const dayNumber = d.getDate()
-    const month =
-      monthNumber < 10 ? `0${monthNumber}` : String(monthNumber)
+    const month = monthNumber < 10 ? `0${monthNumber}` : String(monthNumber)
     const day = dayNumber < 10 ? `0${dayNumber}` : String(dayNumber)
 
     setSelectedDate(`${year}-${month}-${day}`)
@@ -198,20 +194,19 @@ const Fixture = ({ date }: FixtureProps) => {
       {/* Main fixtures list container */}
       <div className="mt-4 rounded-2xl border border-zinc-800 bg-zinc-900/70 p-3 sm:p-4">
         <div className="flex flex-col gap-3">
-          {fixturesModel.fixtures.map((fixture) => {
+          {fixturesModel.fixtures.map(fixture => {
             const storedPrediction = predictionStore.getByFixtureId(
-              fixture.fixture.id,
+              fixture.fixture.id
             )
 
             const isFixtureRefreshing =
-              isLoadingPrediction &&
-              selectedFixtureId === fixture.fixture.id
+              isLoadingPrediction && selectedFixtureId === fixture.fixture.id
 
             return (
               <FixtureCard
                 key={fixture.fixture.id}
                 fixture={fixture}
-                onAnalyzeClick={(params) =>
+                onAnalyzeClick={params =>
                   handlePredictionClick({
                     ...params,
                     fixtureId: fixture.fixture.id,

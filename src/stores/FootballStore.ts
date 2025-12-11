@@ -27,8 +27,8 @@ export class FootballStore {
       return this.fixtures
     }
 
-    return this.fixtures.filter((fixture) =>
-      this.allowedLeagueIds.includes(fixture.league.id),
+    return this.fixtures.filter(fixture =>
+      this.allowedLeagueIds.includes(fixture.league.id)
     )
   }
 

@@ -69,16 +69,10 @@ export async function POST(req: Request) {
       date,
     }: PredictionRequestBody = await req.json()
 
-    if (
-      !leagueCountry ||
-      !leagueName ||
-      !teamHome ||
-      !teamAway ||
-      !date
-    ) {
+    if (!leagueCountry || !leagueName || !teamHome || !teamAway || !date) {
       return NextResponse.json(
         { error: 'Parâmetros obrigatórios ausentes.' },
-        { status: 400 },
+        { status: 400 }
       )
     }
 
@@ -186,7 +180,7 @@ Importante:
           prediction:
             'Limite de uso da IA atingido na conta do servidor. Tente novamente mais tarde.',
         },
-        { status: 200 },
+        { status: 200 }
       )
     }
 
@@ -194,7 +188,7 @@ Importante:
       {
         error: 'Erro ao gerar previsão com IA.',
       },
-      { status: 500 },
+      { status: 500 }
     )
   }
 }

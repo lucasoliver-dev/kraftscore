@@ -121,7 +121,6 @@ const SportForm = ({ onSubmitForm }: SportFormProps) => {
             </SelectContent>
           </Select>
 
-
           <p className={styles.helper}>
             Por enquanto apenas futebol está disponível.
           </p>
@@ -163,7 +162,8 @@ const SportForm = ({ onSubmitForm }: SportFormProps) => {
             type="submit"
             disabled={isSubmitting}
             variant="neon"
-            size="lg">
+            size="lg"
+          >
             {isSubmitting ? 'Buscando...' : 'Buscar'}
           </Button>
         </div>

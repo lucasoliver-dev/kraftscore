@@ -41,7 +41,7 @@ export class FixtureListStore {
     const q = this.normalizedSearch
     if (!q) return this.sourceFixtures
 
-    return this.sourceFixtures.filter((fixture) => {
+    return this.sourceFixtures.filter(fixture => {
       const league = fixture.league.name?.toLowerCase() ?? ''
       const country = fixture.league.country?.toLowerCase() ?? ''
       const home = fixture.teams.home.name?.toLowerCase() ?? ''

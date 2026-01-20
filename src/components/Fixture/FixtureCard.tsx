@@ -20,7 +20,11 @@ export type FixtureCardProps = {
   }) => void
 }
 
-const FixtureCard = ({ fixture, onAnalyzeClick, predictionSummary }: FixtureCardProps) => {
+const FixtureCard = ({
+  fixture,
+  onAnalyzeClick,
+  predictionSummary,
+}: FixtureCardProps) => {
   const dateObj = new Date(fixture.fixture.date)
   const formattedDate = dateObj.toLocaleDateString('en-US')
   const formattedTime = dateObj.toLocaleTimeString('en-US', {

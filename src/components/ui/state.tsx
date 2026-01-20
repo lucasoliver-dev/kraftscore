@@ -1,12 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import {
-  AlertCircle,
-  CheckCircle2,
-  Info,
-  Sparkles,
-} from 'lucide-react'
+import { AlertCircle, CheckCircle2, Info, Sparkles } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Spinner } from '@/components/ui/spinner'
 import { Button } from '@/components/ui/button'
@@ -95,7 +90,12 @@ export function State({
       <span className="mt-0.5">{icon ?? getDefaultIcon(variant)}</span>
 
       <div className="flex-1">
-        <p className={cn('font-medium', variant === 'error' ? 'text-destructive' : 'text-foreground')}>
+        <p
+          className={cn(
+            'font-medium',
+            variant === 'error' ? 'text-destructive' : 'text-foreground'
+          )}
+        >
           {title}
         </p>
 

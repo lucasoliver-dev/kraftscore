@@ -9,9 +9,5 @@ export type CardListProps = {
 }
 
 export default function CardList({ children, className }: CardListProps) {
-  return (
-    <div className={cn('space-y-3', className)}>
-      {children}
-    </div>
-  )
+  return <div className={cn('space-y-3', className)}>{children}</div>
 }

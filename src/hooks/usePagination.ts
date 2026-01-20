@@ -21,7 +21,7 @@ export type PaginationResult<T> = {
   reset: () => void
 }
 
-export const usePagination = <T,>(
+export const usePagination = <T>(
   data: T[],
   options: UsePaginationOptions = {}
 ): PaginationResult<T> => {

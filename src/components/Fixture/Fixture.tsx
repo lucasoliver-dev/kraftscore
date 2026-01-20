@@ -48,8 +48,13 @@ const Fixture = ({ date }: FixtureProps) => {
     void footballStore.loadFixtures(date)
   }, [date, footballStore])
 
-  const { error, filteredFixtures, searchedFixtures, fixturesQuery, isLoading } =
-    footballStore
+  const {
+    error,
+    filteredFixtures,
+    searchedFixtures,
+    fixturesQuery,
+    isLoading,
+  } = footballStore
 
   const fixturesModel: FixturesModel = useMemo(() => {
     return { fixtures: searchedFixtures }
@@ -130,7 +135,7 @@ const Fixture = ({ date }: FixtureProps) => {
         <FixtureSearchBar
           value={fixturesQuery}
           hasQuery={hasQuery}
-          onChange={(event) => footballStore.setFixturesQuery(event.target.value)}
+          onChange={event => footballStore.setFixturesQuery(event.target.value)}
           onClear={() => footballStore.setFixturesQuery('')}
         />
 

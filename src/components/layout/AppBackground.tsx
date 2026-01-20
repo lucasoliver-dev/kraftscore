@@ -1,24 +1,21 @@
-'use client'
+import Image from 'next/image'
 
-/**
- * Global animated background used across the app.
- * Orbs + stripes + hex grid.
- */
-const AppBackground = () => {
+export default function AppBackground() {
   return (
-    <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-      {/* grid hexagonal */}
-      <div className="kbet-hex-grid" />
+    <div className="pointer-events-none fixed inset-0 -z-10">
+      <Image
+        src="/images/ksInsights-bg.png"
+        alt="KraftScore background"
+        fill
+        priority
+        className="object-cover"
+      />
 
-      {/* orbs */}
-      <div className="kbet-orb kbet-orb--orange" />
-      <div className="kbet-orb kbet-orb--green" />
+      {/* Overlay escuro para garantir legibilidade */}
+      <div className="absolute inset-0 bg-black/60" />
 
-      {/* faixas diagonais */}
-      <div className="kbet-stripe kbet-stripe--top" />
-      <div className="kbet-stripe kbet-stripe--bottom" />
+      {/* Glow suave laranja (opcional) */}
+      <div className="absolute inset-0 bg-gradient-to-b from-orange-500/10 via-transparent to-black/70" />
     </div>
   )
 }
-
-export default AppBackground

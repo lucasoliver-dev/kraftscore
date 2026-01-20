@@ -12,9 +12,9 @@ export class FootballStore {
   fixtures: Fixture[] = []
   isLoading = false
 
-  /**
-   * Creates a new instance of FootballStore.
-   */
+  /** Search query typed by the user (team/league/country). */
+  fixturesQuery = ''
+
   constructor() {
     makeAutoObservable(this)
   }
@@ -33,10 +33,35 @@ export class FootballStore {
   }
 
   /**
-   * Loads fixtures for a given date and updates the store state.
-   *
-   * @param date - The date in YYYY-MM-DD format.
+   * Fixtures filtered by search query (team, league, country).
    */
+  get searchedFixtures(): Fixture[] {
+    const query = this.fixturesQuery.trim().toLowerCase()
+
+    if (!query) return this.filteredFixtures
+
+    return this.filteredFixtures.filter((fixture: Fixture) => {
+      const home = fixture.teams.home.name.toLowerCase()
+      const away = fixture.teams.away.name.toLowerCase()
+      const league = fixture.league.name.toLowerCase()
+      const country = fixture.league.country.toLowerCase()
+
+      return (
+        home.includes(query) ||
+        away.includes(query) ||
+        league.includes(query) ||
+        country.includes(query)
+      )
+    })
+  }
+
+  /**
+   * Updates fixtures search query.
+   */
+  setFixturesQuery(value: string): void {
+    this.fixturesQuery = value
+  }
+
   async loadFixtures(date: string): Promise<void> {
     this.isLoading = true
     this.error = null
@@ -59,11 +84,6 @@ export class FootballStore {
     }
   }
 
-  /**
-   * Updates the list of allowed league IDs used to filter fixtures.
-   *
-   * @param ids - The league IDs to allow.
-   */
   setAllowedLeagueIds(ids: number[]): void {
     this.allowedLeagueIds = ids
   }

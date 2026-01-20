@@ -8,37 +8,25 @@ import {
 } from '@clerk/nextjs'
 import type { BaseTheme } from '@clerk/types'
 import { LineChart, Sparkles } from 'lucide-react'
+import styles from './header.module.scss'
+import { KsIcon } from '@/components/icons'
 
-/**
- * Main app header with brand and Clerk user menu.
- */
 const Header = () => (
-  <header
-    aria-label="Page Header"
-    className="border-b border-zinc-800 bg-zinc-950/95"
-  >
-    <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 sm:px-6 sm:py-4">
-      {/* Logo / título centralizado */}
-      <div className="flex-1 text-center">
-        <div className="flex items-center justify-center gap-2">
-          {/* Ícone temporário (substituir pela logo depois) */}
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-orange-500/10 text-orange-400 ring-1 ring-orange-500/40">
-            <Sparkles className="h-4 w-4" />
-          </span>
+  <header className={styles.header} aria-label="Page Header">
+    <div className={styles.container}>
+      <div className={styles.brand}>
+        <KsIcon size="2xl" />
+        <div className={styles.brandText}>
+          <h1 className={styles.title}>KraftScore Insights</h1>
 
-          <h1 className="text-lg font-bold text-zinc-50 sm:text-xl">
-            KraftScore Insights
-          </h1>
+          <p className={styles.subtitle}>
+            <LineChart className={styles.subtitleIcon} />
+            IA e estatísticas a favor das suas apostas.
+          </p>
         </div>
-
-        <p className="mt-0.5 flex items-center justify-center gap-1 text-xs text-zinc-400 sm:text-sm">
-          <LineChart className="h-3 w-3 text-orange-400 sm:h-4 sm:w-4" />
-          <span>IA e estatísticas a favor das suas apostas.</span>
-        </p>
       </div>
 
-      {/* Área de autenticação (menu Clerk) */}
-      <div className="mt-1 flex items-center gap-3 sm:mt-0">
+      <div className={styles.userArea}>
         <SignedIn>
           <UserButton
             appearance={{
@@ -50,20 +38,15 @@ const Header = () => (
                 colorTextOnPrimaryBackground: '#020617',
               },
               elements: {
-                userButtonAvatarBox:
-                  'h-9 w-9 border border-orange-500/80 shadow-[0_0_12px_rgba(249,115,22,0.7)]',
-                userButtonTrigger:
-                  'rounded-full ring-offset-0 focus:outline-none focus:ring-2 focus:ring-orange-500/70',
-                userButtonPopoverCard:
-                  'border border-orange-500/40 bg-zinc-900/95 text-zinc-50 shadow-[0_0_30px_rgba(249,115,22,0.35)] backdrop-blur-sm',
-                userButtonPopoverHeaderTitle:
-                  'text-sm font-semibold text-zinc-50',
-                userButtonPopoverHeaderSubtitle: 'text-xs text-zinc-400',
-                userButtonPopoverActionButton:
-                  'flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-zinc-100 hover:bg-zinc-800',
-                userButtonPopoverActionButtonIcon: 'text-zinc-400',
-                userButtonPopoverActionButtonText: 'text-xs text-zinc-100',
-                userButtonPopoverFooter: 'hidden',
+                userButtonAvatarBox: styles.userAvatarBox,
+                userButtonTrigger: styles.userButtonTrigger,
+                userButtonPopoverCard: styles.popoverCard,
+                userButtonPopoverHeaderTitle: styles.popoverTitle,
+                userButtonPopoverHeaderSubtitle: styles.popoverSubtitle,
+                userButtonPopoverActionButton: styles.popoverAction,
+                userButtonPopoverActionButtonIcon: styles.popoverActionIcon,
+                userButtonPopoverActionButtonText: styles.popoverActionText,
+                userButtonPopoverFooter: styles.popoverFooter,
               },
             }}
           />

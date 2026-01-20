@@ -1,0 +1,93 @@
+.form {
+  width: 100%;
+  border-radius: 1.25rem;
+  border: 1px solid hsl(var(--border));
+  background: rgba(24, 24, 27, 0.65);
+  backdrop-filter: blur(8px);
+  padding: 18px;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.field {
+  width: 100%;
+}
+
+.label {
+  display: block;
+  margin-bottom: 8px;
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: hsl(var(--muted-foreground));
+}
+
+.control {
+  width: 100%;
+  display: block;
+
+  border-radius: 10px;
+  border: 1px solid rgba(113, 113, 122, 0.5);
+  background: rgba(9, 9, 11, 0.55);
+
+  padding: 12px 12px;
+
+  font-size: 14px;
+  color: hsl(var(--foreground));
+
+  outline: none;
+  transition: all 180ms ease;
+}
+
+/* ✅ Foco padrão (input, datepicker) */
+.control:focus,
+.control:focus-visible {
+  border-color: rgba(249, 115, 22, 0.9);
+  box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.55),
+    0 0 22px rgba(249, 115, 22, 0.25);
+}
+
+/* ✅ Quando o Select do Radix está aberto */
+.control[data-state='open'] {
+  border-color: rgba(249, 115, 22, 0.9);
+  box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.55),
+    0 0 22px rgba(249, 115, 22, 0.25);
+}
+
+
+.helper {
+  margin-top: 6px;
+  font-size: 11px;
+  color: rgba(161, 161, 170, 0.8);
+}
+
+/* lista de erros */
+.errors {
+  margin-top: 4px;
+  padding-left: 18px;
+  display: grid;
+  gap: 6px;
+
+  font-size: 12px;
+  color: rgba(248, 113, 113, 0.95);
+}
+
+/* botão */
+.actions {
+  margin-top: 6px;
+}
+
+/* Responsivo */
+@media (min-width: 768px) {
+  .fields {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+}

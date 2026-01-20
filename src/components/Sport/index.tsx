@@ -1,8 +1,12 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import Fixture from '../Fixture'
-import SportForm from '../SportForm'
+import Fixture from '@/components/Fixture'
+import SportForm from '@/components/SportForm'
+import Section from '@/components/layout/section/Section'
+import PageLayout from '@/components/layout/PageLayout'
+import Stack from '@/components/layout/stack/Stack'
+import styles from './sport.module.scss'
 
 /**
  * Container page for sport selection and fixtures list.
@@ -39,17 +43,16 @@ const Sport = () => {
   }, [sport, date])
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-50">
-      <div className="mx-auto flex max-w-5xl flex-col gap-4 px-3 pb-6 pt-4 sm:px-4">
-        {/* Form de seleção de esporte/data */}
-        <SportForm onSubmitForm={handleFormSubmit} />
-
-        {/* Resultados */}
-        <div ref={resultsRef}>
-          {sport && date && <Fixture sport={sport} date={date} />}
-        </div>
-      </div>
-    </div>
+    <Section>
+      <PageLayout>
+        <Stack>
+          <SportForm onSubmitForm={handleFormSubmit} />
+          <div ref={resultsRef} className={styles.results}>
+            {sport && date && <Fixture sport={sport} date={date} />}
+          </div>
+        </Stack>
+      </PageLayout>
+    </Section>
   )
 }
 

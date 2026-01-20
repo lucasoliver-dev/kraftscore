@@ -2,70 +2,146 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 224 71.4% 4.1%;
-    --card: 0 0% 100%;
-    --card-foreground: 224 71.4% 4.1%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 224 71.4% 4.1%;
-    --primary: 220.9 39.3% 11%;
-    --primary-foreground: 210 20% 98%;
-    --secondary: 220 14.3% 95.9%;
-    --secondary-foreground: 220.9 39.3% 11%;
-    --muted: 220 14.3% 95.9%;
-    --muted-foreground: 220 8.9% 46.1%;
-    --accent: 220 14.3% 95.9%;
-    --accent-foreground: 220.9 39.3% 11%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 20% 98%;
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 224 71.4% 4.1%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
-  }
-  .dark {
-    --background: 224 71.4% 4.1%;
-    --foreground: 210 20% 98%;
-    --card: 224 71.4% 4.1%;
-    --card-foreground: 210 20% 98%;
-    --popover: 224 71.4% 4.1%;
-    --popover-foreground: 210 20% 98%;
-    --primary: 210 20% 98%;
-    --primary-foreground: 220.9 39.3% 11%;
-    --secondary: 215 27.9% 16.9%;
-    --secondary-foreground: 210 20% 98%;
-    --muted: 215 27.9% 16.9%;
-    --muted-foreground: 217.9 10.6% 64.9%;
-    --accent: 215 27.9% 16.9%;
-    --accent-foreground: 210 20% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 20% 98%;
-    --border: 215 27.9% 16.9%;
-    --input: 215 27.9% 16.9%;
-    --ring: 216 12.2% 83.9%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-  }
-}
+@import './styles/tokens.css';
 
 @layer base {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
 }
+
+/* ==========================================================
+  Design System (classes globais para evitar repetição)
+========================================================== */
+@layer components {
+  /* Container padrão (centralizado + max width) */
+  .kbet-container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding-left: var(--page-padding-x);
+    padding-right: var(--page-padding-x);
+  }
+
+  /* Page spacing padrão */
+  .kbet-page {
+    padding-top: var(--page-padding-y);
+    padding-bottom: 24px;
+  }
+
+  /* Card / Panel glass padrão */
+  .kbet-panel {
+    border-radius: var(--radius-lg);
+    border: 1px solid hsl(var(--border));
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* Header padrão */
+  .kbet-header {
+    border-bottom: 1px solid var(--header-border);
+    background: var(--header-bg);
+    backdrop-filter: blur(var(--header-blur));
+  }
+
+  /* Stack vertical padrão */
+  .kbet-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* Field wrapper (form) */
+  .kbet-field {
+    width: 100%;
+  }
+
+  /* Label padrão */
+  .kbet-label {
+    display: block;
+    margin-bottom: 8px;
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    color: hsl(var(--muted-foreground));
+  }
+
+  /* Helper text */
+  .kbet-helper {
+    margin-top: 6px;
+    font-size: 11px;
+    color: rgba(161, 161, 170, 0.8);
+  }
+
+  /* Errors list */
+  .kbet-errors {
+    margin-top: 4px;
+    padding-left: 18px;
+
+    display: grid;
+    gap: 6px;
+
+    font-size: 12px;
+    color: rgba(248, 113, 113, 0.95);
+  }
+
+  /* Control padrão (input/select/date) */
+  .kbet-control {
+    width: 100%;
+    display: block;
+
+    height: var(--control-height);
+
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--control-border);
+    background: var(--control-bg);
+
+    padding: var(--control-padding-y) var(--control-padding-x);
+
+    font-size: var(--control-font-size);
+    color: var(--control-text);
+
+    outline: none;
+    transition: all 180ms ease;
+  }
+
+  .kbet-control::placeholder {
+    color: var(--control-placeholder);
+  }
+
+  .kbet-control:focus {
+    border-color: var(--control-focus-border);
+    box-shadow: var(--control-focus-shadow);
+  }
+
+  /* Ajuste: Select trigger do Radix (se você usar) */
+  .kbet-select-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  /* Responsivo: centralizar fields no desktop */
+  @media (min-width: 768px) {
+    .kbet-form-fields {
+      max-width: 520px;
+      margin: 0 auto;
+    }
+  }
+}
+
+/* ==========================================================
+  Background FX / Orbs / Grid (mantido)
+========================================================== */
 
 /* Animação de “flutuar” bem lenta */
 @keyframes kbet-float-slow {
@@ -96,9 +172,9 @@
 .kbet-orb {
   position: absolute;
   border-radius: 9999px;
-  filter: blur(20px); /* menos blur para aparecer mais */
-  opacity: 0.8; /* bem mais visível */
-  mix-blend-mode: normal; /* tira o screen por enquanto */
+  filter: blur(20px);
+  opacity: 0.8;
+  mix-blend-mode: normal;
 }
 
 /* Orb laranja neon (cor principal do app) */
@@ -154,7 +230,7 @@
 .kbet-hex-grid {
   position: absolute;
   inset: 0;
-  opacity: 0.22; /* mais forte para ver melhor */
+  opacity: 0.22;
   pointer-events: none;
   background-image: radial-gradient(
       circle at 0 0,

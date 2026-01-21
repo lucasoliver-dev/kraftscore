@@ -1,19 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true,
-  },
   images: {
-    domains: [
-      'media.api-sports.io',
-      'media-2.api-sports.io',
-      'media-1.api-sports.io',
-      'media-3.api-sports.io',
+    remotePatterns: [
+      { protocol: 'https', hostname: 'media.api-sports.io' },
+      { protocol: 'https', hostname: 'media-1.api-sports.io' },
+      { protocol: 'https', hostname: 'media-2.api-sports.io' },
+      { protocol: 'https', hostname: 'media-3.api-sports.io' },
     ],
-  },
-  publicRuntimeConfig: {
-    API_FOOTBALL_KEY: process.env.API_FOOTBALL_KEY,
-    API_FOOTBALL_HOST: process.env.API_FOOTBALL_HOST,
   },
 }
 

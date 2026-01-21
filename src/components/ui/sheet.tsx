@@ -18,10 +18,7 @@ const SheetOverlay = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Overlay
     ref={ref}
-    className={cn(
-      'fixed inset-0 z-50 bg-black/70 backdrop-blur-sm',
-      className
-    )}
+    className={cn('fixed inset-0 z-50 bg-black/70 backdrop-blur-sm', className)}
     {...props}
   />
 ))
@@ -37,10 +34,10 @@ const SheetContent = React.forwardRef<
     side === 'left'
       ? 'left-0 top-0 h-full w-[85%] sm:w-[420px]'
       : side === 'right'
-        ? 'right-0 top-0 h-full w-[85%] sm:w-[420px]'
-        : side === 'top'
-          ? 'top-0 left-0 w-full'
-          : 'bottom-0 left-0 w-full'
+      ? 'right-0 top-0 h-full w-[85%] sm:w-[420px]'
+      : side === 'top'
+      ? 'top-0 left-0 w-full'
+      : 'bottom-0 left-0 w-full'
 
   return (
     <SheetPortal>
@@ -76,7 +73,10 @@ const SheetHeader = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn('flex flex-col space-y-2 text-left', className)} {...props} />
+  <div
+    className={cn('flex flex-col space-y-2 text-left', className)}
+    {...props}
+  />
 )
 
 const SheetTitle = React.forwardRef<
@@ -85,7 +85,10 @@ const SheetTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Title
     ref={ref}
-    className={cn('text-lg font-semibold leading-none tracking-tight', className)}
+    className={cn(
+      'text-lg font-semibold leading-none tracking-tight',
+      className
+    )}
     {...props}
   />
 ))

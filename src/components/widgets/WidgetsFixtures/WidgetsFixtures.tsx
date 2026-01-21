@@ -36,7 +36,10 @@ export const WidgetsFixtures = observer(() => {
                 <button
                   key={item.id}
                   type="button"
-                  className={cn(styles.tab, tab === item.id && styles.tabActive)}
+                  className={cn(
+                    styles.tab,
+                    tab === item.id && styles.tabActive
+                  )}
                   onClick={() => footballWidgetsStore.setFixturesTab(item.id)}
                 >
                   {item.label}

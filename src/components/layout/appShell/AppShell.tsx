@@ -14,13 +14,7 @@ import {
 } from '@/components/ui/sheet'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 
-import {
-  Bot,
-  Home,
-  LayoutDashboard,
-  Menu,
-  Trophy,
-} from 'lucide-react'
+import { Bot, Home, LayoutDashboard, Menu, Trophy } from 'lucide-react'
 
 import styles from './app-shell.module.scss'
 
@@ -42,7 +36,11 @@ export default function AppShell({ children }: AppShellProps) {
       { href: '/', label: 'Home', icon: <Home size={18} /> },
       { href: '/fixtures', label: 'Jogos', icon: <Trophy size={18} /> },
       { href: '/predictions', label: 'Análise IA', icon: <Bot size={18} /> },
-      { href: '/widgets', label: 'Widgets', icon: <LayoutDashboard size={18} /> },
+      {
+        href: '/widgets',
+        label: 'Widgets',
+        icon: <LayoutDashboard size={18} />,
+      },
     ]
   }, [])
 
@@ -99,7 +97,11 @@ export default function AppShell({ children }: AppShellProps) {
         <header className={styles.mobileTopbar}>
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="secondary" size="icon" className={styles.iconBtn}>
+              <Button
+                variant="secondary"
+                size="icon"
+                className={styles.iconBtn}
+              >
                 <Menu size={18} />
               </Button>
             </SheetTrigger>

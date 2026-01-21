@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react'
-import { Prediction, type PredictionRequest } from '@/models/prediction/prediction'
+import {
+  Prediction,
+  type PredictionRequest,
+} from '@/models/prediction/prediction'
 import { fetchPrediction } from '@/services/prediction/predictionService'
 
 /**

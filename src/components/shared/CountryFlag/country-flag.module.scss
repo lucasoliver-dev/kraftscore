@@ -7,20 +7,16 @@
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(255, 255, 255, 0.06);
 
-  box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 0.25),
-    0 10px 26px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25), 0 10px 26px rgba(0, 0, 0, 0.25);
 }
 
 .placeholder {
   display: inline-block;
   border-radius: 999px;
 
-  border: 1px solid rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.06);
-  box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 0.25),
-    0 10px 26px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25), 0 10px 26px rgba(0, 0, 0, 0.25);
 }
 
 .sm {

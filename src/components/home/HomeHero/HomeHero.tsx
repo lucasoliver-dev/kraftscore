@@ -9,12 +9,7 @@ import Section from '@/components/layout/section/Section'
 import styles from './home-hero.module.scss'
 
 function getDisplayName(user: any) {
-  return (
-    user?.firstName ||
-    user?.username ||
-    user?.fullName ||
-    'Craque'
-  )
+  return user?.firstName || user?.username || user?.fullName || 'Craque'
 }
 
 export function HomeHero() {
@@ -44,7 +39,8 @@ export function HomeHero() {
 
             <div className={styles.text}>
               <h1 className={styles.title}>
-                Bem-vindo de volta, <span className={styles.name}>{name}</span> 👑
+                Bem-vindo de volta, <span className={styles.name}>{name}</span>{' '}
+                👑
               </h1>
 
               <p className={styles.subtitle}>

@@ -4,12 +4,9 @@ import { cn } from '@/lib/utils'
 type CardDensity = 'tight' | 'default' | 'loose'
 
 const densityVars: Record<CardDensity, string> = {
-  tight:
-    '[--card-pad:var(--space-4,16px)] [--card-gap:var(--space-1,6px)]',
-  default:
-    '[--card-pad:var(--space-5,20px)] [--card-gap:var(--space-2,8px)]',
-  loose:
-    '[--card-pad:var(--space-6,24px)] [--card-gap:var(--space-3,12px)]',
+  tight: '[--card-pad:var(--space-4,16px)] [--card-gap:var(--space-1,6px)]',
+  default: '[--card-pad:var(--space-5,20px)] [--card-gap:var(--space-2,8px)]',
+  loose: '[--card-pad:var(--space-6,24px)] [--card-gap:var(--space-3,12px)]',
 }
 
 type CardProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -80,10 +77,7 @@ const CardContent = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn(
-      'px-[var(--card-pad)] pb-[var(--card-pad)] pt-0',
-      className
-    )}
+    className={cn('px-[var(--card-pad)] pb-[var(--card-pad)] pt-0', className)}
     {...props}
   />
 ))
@@ -96,11 +90,7 @@ const CardBody = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn('p-[var(--card-pad)]', className)}
-    {...props}
-  />
+  <div ref={ref} className={cn('p-[var(--card-pad)]', className)} {...props} />
 ))
 CardBody.displayName = 'CardBody'
 

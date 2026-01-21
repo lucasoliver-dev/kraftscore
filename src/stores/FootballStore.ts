@@ -95,8 +95,7 @@ export class FootballStore {
         this.fixturesDate = date
         this.isLoading = false
       })
-    }
-    catch (err: unknown) {
+    } catch (err: unknown) {
       const message =
         err instanceof Error ? err.message : 'Failed to load fixtures'
 
@@ -121,8 +120,7 @@ export class FootballStore {
         this.standings = standings
         this.isLoadingStandings = false
       })
-    }
-    catch (err: unknown) {
+    } catch (err: unknown) {
       const message =
         err instanceof Error ? err.message : 'Failed to load standings'
 

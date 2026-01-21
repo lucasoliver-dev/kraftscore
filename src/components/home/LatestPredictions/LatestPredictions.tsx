@@ -30,9 +30,17 @@ export function LatestPredictions() {
       actionLabel="Abrir histórico →"
     >
       <List scroll fade maxHeight={420} gap="md">
-        <PredictionCard title="Barcelona x Real Madrid" pick="Over 2.5" confidence="78%" />
+        <PredictionCard
+          title="Barcelona x Real Madrid"
+          pick="Over 2.5"
+          confidence="78%"
+        />
         <PredictionCard title="PSG x Marseille" pick="BTTS" confidence="64%" />
-        <PredictionCard title="Palmeiras x Corinthians" pick="Casa vence" confidence="59%" />
+        <PredictionCard
+          title="Palmeiras x Corinthians"
+          pick="Casa vence"
+          confidence="59%"
+        />
       </List>
     </HomePanel>
   )

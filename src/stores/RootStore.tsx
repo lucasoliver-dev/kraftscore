@@ -27,8 +27,8 @@ export class RootStore {
    * Store responsible for football standings.
    */
   standingsStore: StandingsStore
-  /** 
-   * Store responsible for football widgets UI state. 
+  /**
+   * Store responsible for football widgets UI state.
    * */
   footballWidgetsStore: FootballWidgetsStore
 

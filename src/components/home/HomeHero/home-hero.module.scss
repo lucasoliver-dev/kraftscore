@@ -12,7 +12,7 @@
   overflow: hidden;
   isolation: isolate;
 
-  border: 1px solid rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   background: var(--glass-bg-strong);
   border-radius: inherit;
 }
@@ -26,26 +26,19 @@
   pointer-events: none;
 
   background:
-    /* glow principal topo-esquerdo (CONTROLADO) */
-    radial-gradient(
+    /* glow principal topo-esquerdo (CONTROLADO) */ radial-gradient(
       620px circle at 18% 28%,
       rgba(249, 115, 22, 0.18),
       transparent 60%
     ),
-
     /* glow secundário direita (CONTROLADO) */
-    radial-gradient(
-      520px circle at 82% 35%,
-      rgba(249, 115, 22, 0.10),
-      transparent 65%
-    ),
-
+      radial-gradient(
+        520px circle at 82% 35%,
+        rgba(249, 115, 22, 0.1),
+        transparent 65%
+      ),
     /* gradient cinema (mais leve e premium) */
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.05),
-      rgba(0, 0, 0, 0.22)
-    );
+      linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.22));
 
   opacity: 0.95;
 }
@@ -64,7 +57,7 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(249, 115, 22, 0.40),
+    rgba(249, 115, 22, 0.4),
     transparent
   );
 
@@ -95,7 +88,7 @@
 
   background: radial-gradient(
     circle at 30% 30%,
-    rgba(249, 115, 22, 0.20),
+    rgba(249, 115, 22, 0.2),
     transparent 60%
   );
 
@@ -127,7 +120,7 @@
 
   color: rgba(255, 255, 255, 0.92);
   background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .miniTag {
@@ -143,7 +136,7 @@
 
   color: hsl(var(--brand));
   background: rgba(249, 115, 22, 0.12);
-  border: 1px solid rgba(249, 115, 22, 0.20);
+  border: 1px solid rgba(249, 115, 22, 0.2);
 }
 
 /* =========================
@@ -206,7 +199,7 @@
   color: rgba(255, 255, 255, 0.82);
 
   background: rgba(0, 0, 0, 0.22);
-  border: 1px solid rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 
   backdrop-filter: blur(10px);
 }
@@ -239,8 +232,7 @@
   color: hsl(var(--brand-foreground));
   background: hsl(var(--brand));
 
-  box-shadow:
-    0 0 0 1px rgba(249, 115, 22, 0.35),
+  box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.35),
     0 0 30px rgba(249, 115, 22, 0.22);
 
   transition: transform 180ms ease, opacity 180ms ease;
@@ -269,7 +261,7 @@
   color: hsl(var(--brand));
 
   background: rgba(249, 115, 22, 0.12);
-  border: 1px solid rgba(249, 115, 22, 0.20);
+  border: 1px solid rgba(249, 115, 22, 0.2);
 
   transition: transform 180ms ease, opacity 180ms ease;
 }

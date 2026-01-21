@@ -23,7 +23,7 @@
   height: 28px;
   border-radius: 10px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.04);
   flex-shrink: 0;
   object-fit: cover;
@@ -72,7 +72,7 @@
   color: hsl(var(--brand));
   padding: 6px 10px;
   border-radius: 999px;
-  background: hsl(var(--brand) / 0.10);
+  background: hsl(var(--brand) / 0.1);
   border: 1px solid hsl(var(--brand) / 0.18);
 }
 
@@ -92,7 +92,7 @@
   padding: 0 12px;
 
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.04);
 
   color: rgba(255, 255, 255, 0.78);
@@ -109,14 +109,14 @@
 
 .tabActive {
   color: hsl(var(--brand));
-  background: hsl(var(--brand) / 0.10);
+  background: hsl(var(--brand) / 0.1);
   border: 1px solid hsl(var(--brand) / 0.18);
   box-shadow: var(--glow-orange);
 }
 
 .body {
   border-radius: var(--radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(0, 0, 0, 0.22);
   padding: var(--space-4);
 }

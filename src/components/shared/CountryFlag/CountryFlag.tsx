@@ -1,30 +1,33 @@
-'use client'
-
-import type { ImgHTMLAttributes } from 'react'
+import Image, { type ImageProps } from 'next/image'
 
 import { cn } from '@/lib/utils'
-
 import styles from './country-flag.module.scss'
 
-export type CountryFlagSize = 'sm' | 'md'
+type CountryFlagSize = 'sm' | 'md' | 'lg'
 
-export type CountryFlagProps = Omit<
-  ImgHTMLAttributes<HTMLImageElement>,
-  'src'
-> & {
-  src?: string | null
-  size?: CountryFlagSize
+const SIZE_PX: Record<CountryFlagSize, number> = {
+  sm: 16,
+  md: 20,
+  lg: 24,
 }
 
-/**
- * Renders a small country flag image.
- * If no src is provided, renders a placeholder circle.
- */
+export type CountryFlagProps = Omit<
+  ImageProps,
+  'src' | 'alt' | 'width' | 'height' | 'sizes' | 'placeholder'
+> & {
+  src?: string | null
+  alt?: string | null
+  size?: CountryFlagSize
+  className?: string
+  placeholder?: 'blur' | 'empty'
+}
+
 export function CountryFlag({
   src,
-  size = 'sm',
-  className,
   alt,
+  size = 'md',
+  className,
+  placeholder = 'empty',
   ...props
 }: CountryFlagProps) {
   if (!src) {
@@ -36,11 +39,17 @@ export function CountryFlag({
     )
   }
 
+  const px = SIZE_PX[size]
+
   return (
-    <img
+    <Image
       src={src}
       alt={alt ?? 'Bandeira'}
+      width={px}
+      height={px}
+      sizes={`${px}px`}
       className={cn(styles.flag, styles[size], className)}
+      placeholder={placeholder}
       loading="lazy"
       {...props}
     />

@@ -190,20 +190,16 @@
   /* ------------------------------
     Glow / Neon
   ------------------------------ */
-  --glow-orange:
-      0 0 0 1px hsl(var(--brand) / 0.18),
-      0 0 22px hsl(var(--brand) / 0.12);
-  
-  --glow-orange-strong:
-    0 0 0 1px hsl(var(--brand) / 0.26),
+  --glow-orange: 0 0 0 1px hsl(var(--brand) / 0.18),
+    0 0 22px hsl(var(--brand) / 0.12);
+
+  --glow-orange-strong: 0 0 0 1px hsl(var(--brand) / 0.26),
     0 0 42px hsl(var(--brand) / 0.18);
 
-  --glow-orange-item:
-    0 0 0 1px hsl(var(--brand) / 0.12),
+  --glow-orange-item: 0 0 0 1px hsl(var(--brand) / 0.12),
     0 0 18px hsl(var(--brand) / 0.08);
 
-  --glow-orange-item-hover:
-    0 0 0 1px hsl(var(--brand) / 0.20),
+  --glow-orange-item-hover: 0 0 0 1px hsl(var(--brand) / 0.2),
     0 0 26px hsl(var(--brand) / 0.12);
   /* ------------------------------
     Glass / Backdrop (Dark)

@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { observer } from 'mobx-react-lite'
 import { useEffect } from 'react'
 import { Bot } from 'lucide-react'
@@ -117,7 +118,9 @@ export const TodayFixtures = observer(() => {
           {footballStore.isLoading && (
             <div className={styles.state}>
               <p className={styles.stateTitle}>Carregando jogos…</p>
-              <p className={styles.stateText}>Buscando fixtures do dia na API.</p>
+              <p className={styles.stateText}>
+                Buscando fixtures do dia na API.
+              </p>
             </div>
           )}
 
@@ -155,7 +158,10 @@ export const TodayFixtures = observer(() => {
                         </span>
 
                         <span
-                          className={cn(styles.status, styles[`status_${variant}`])}
+                          className={cn(
+                            styles.status,
+                            styles[`status_${variant}`]
+                          )}
                         >
                           {getStatusLabel(item.fixture.status.short)}
                         </span>
@@ -167,10 +173,13 @@ export const TodayFixtures = observer(() => {
 
                       <div className={styles.teams}>
                         <div className={styles.teamLine}>
-                          <img
+                          <Image
                             className={styles.teamLogo}
                             src={item.teams.home.logo}
                             alt={item.teams.home.name}
+                            width={18}
+                            height={18}
+                            sizes="18px"
                           />
                           <span className={styles.teamName}>
                             {item.teams.home.name}
@@ -178,10 +187,13 @@ export const TodayFixtures = observer(() => {
                         </div>
 
                         <div className={styles.teamLine}>
-                          <img
+                          <Image
                             className={styles.teamLogo}
                             src={item.teams.away.logo}
                             alt={item.teams.away.name}
+                            width={18}
+                            height={18}
+                            sizes="18px"
                           />
                           <span className={styles.teamName}>
                             {item.teams.away.name}

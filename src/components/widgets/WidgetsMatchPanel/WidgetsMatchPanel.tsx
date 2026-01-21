@@ -65,7 +65,9 @@ export function WidgetsMatchPanel() {
               <button
                 key={item.id}
                 type="button"
-                className={`${styles.tab} ${tab === item.id ? styles.tabActive : ''}`}
+                className={`${styles.tab} ${
+                  tab === item.id ? styles.tabActive : ''
+                }`}
                 onClick={() => setTab(item.id)}
               >
                 <item.Icon size={16} />
@@ -76,9 +78,12 @@ export function WidgetsMatchPanel() {
 
           <div className={styles.body}>
             <div className={styles.placeholder}>
-              <p className={styles.placeholderTitle}>Widget pronto pra dados reais</p>
+              <p className={styles.placeholderTitle}>
+                Widget pronto pra dados reais
+              </p>
               <p className={styles.placeholderText}>
-                Próximo passo: plugar o conteúdo de <b>{tab}</b> baseado no jogo selecionado.
+                Próximo passo: plugar o conteúdo de <b>{tab}</b> baseado no jogo
+                selecionado.
               </p>
 
               <div className={styles.blocks}>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { Prediction, type PredictionRequest } from '@/models/prediction'
-import { fetchPrediction } from '@/services/predictionService'
+import { Prediction, type PredictionRequest } from '@/models/prediction/prediction'
+import { fetchPrediction } from '@/services/prediction/predictionService'
 
 /**
  * Result returned by the usePrediction hook.

@@ -1,3 +1,11 @@
 .surface {
-  @apply bg-card/60 border-border rounded-2xl shadow-sm;
+  @apply bg-card/60;
+}
+
+.glow_soft {
+  box-shadow: var(--shadow-soft), var(--glow-orange);
+}
+
+.glow_strong {
+  box-shadow: var(--shadow-card), var(--glow-orange-strong);
 }

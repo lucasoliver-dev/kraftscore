@@ -4,6 +4,8 @@ import React, { createContext, useContext, useRef, type ReactNode } from 'react'
 import { FootballStore } from '@/stores/FootballStore'
 import { PredictionStore } from '@/stores/PredictionStore'
 import { FixtureListStore } from './FixturesListStore'
+import { StandingsStore } from './StandingsStore'
+import { FootballWidgetsStore } from './FootballWidgetsStore'
 
 /**
  * Root MobX store that aggregates all domain stores.
@@ -21,6 +23,14 @@ export class RootStore {
    * Store responsible for fixtures list (search + pagination).
    */
   fixtureListStore: FixtureListStore
+  /**
+   * Store responsible for football standings.
+   */
+  standingsStore: StandingsStore
+  /** 
+   * Store responsible for football widgets UI state. 
+   * */
+  footballWidgetsStore: FootballWidgetsStore
 
   /**
    * Creates a new RootStore instance and initializes all sub-stores.
@@ -31,6 +41,8 @@ export class RootStore {
     this.fixtureListStore = new FixtureListStore(this.footballStore, {
       pageSize: 20,
     })
+    this.standingsStore = new StandingsStore()
+    this.footballWidgetsStore = new FootballWidgetsStore(this.footballStore)
   }
 }
 

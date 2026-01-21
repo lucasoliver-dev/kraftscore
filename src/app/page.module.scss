@@ -1,0 +1,20 @@
+.page {
+  display: flex;
+  flex-direction: column;
+
+  /* tokens + fallback */
+  gap: var(--space-6, 24px);
+  padding: var(--space-6, 24px);
+}
+
+.widgetsGrid {
+  display: grid;
+  gap: var(--space-4, 16px);
+
+  /* desktop */
+  grid-template-columns: 1.25fr 0.75fr;
+
+  @media (max-width: 1100px) {
+    grid-template-columns: 1fr;
+  }
+}

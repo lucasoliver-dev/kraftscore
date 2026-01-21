@@ -35,11 +35,16 @@
 
   /* Card / Panel glass padrão */
   .kbet-panel {
-    border-radius: var(--radius-lg);
-    border: 1px solid hsl(var(--border));
-    background: var(--glass-bg);
-    backdrop-filter: blur(var(--glass-blur));
-    box-shadow: var(--shadow-soft);
+    /* mantém tudo que já tem */
+    box-shadow: var(--shadow-soft), var(--glow-orange);
+    transition: box-shadow 180ms ease, transform 180ms ease;
+  }
+
+  @media (hover: hover) {
+    .kbet-panel:hover {
+      box-shadow: var(--shadow-soft), var(--glow-orange-strong);
+      transform: translateY(-1px);
+    }
   }
 
   /* Header padrão */

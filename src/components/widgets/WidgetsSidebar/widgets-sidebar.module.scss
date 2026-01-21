@@ -1,0 +1,139 @@
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.headerText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.title {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 950;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.60);
+}
+
+.searchWrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(0, 0, 0, 0.22);
+
+  padding: 10px 12px;
+}
+
+.searchIcon {
+  opacity: 0.75;
+}
+
+.searchInput {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.90);
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.45);
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  max-height: 640px;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 12px 12px;
+  border-radius: var(--radius-md);
+
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(0, 0, 0, 0.18);
+
+  cursor: pointer;
+  text-align: left;
+
+  transition:
+    transform 150ms ease,
+    box-shadow 150ms ease,
+    border-color 150ms ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    border-color: rgba(249, 115, 22, 0.22);
+    box-shadow: var(--glow-orange);
+  }
+}
+
+.itemLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 30px;
+  height: 30px;
+  border-radius: 12px;
+
+  background: rgba(249, 115, 22, 0.10);
+  border: 1px solid rgba(249, 115, 22, 0.18);
+  color: rgba(249, 115, 22, 0.92);
+}
+
+.itemLabel {
+  font-size: 13px;
+  font-weight: 850;
+  color: rgba(255, 255, 255, 0.88);
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.itemRight {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.count {
+  font-size: 12px;
+  font-weight: 950;
+  color: rgba(255, 255, 255, 0.70);
+}
+
+.chevron {
+  font-size: 16px;
+  opacity: 0.55;
+}

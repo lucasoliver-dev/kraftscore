@@ -1,13 +1,28 @@
-import Header from '@/components/Header'
-import Sport from '@/components/Sport'
+'use client'
 
-const Home = () => {
+import AppShell from '@/components/layout/appShell/AppShell'
+import styles from './page.module.scss'
+
+import { HomeHero } from '@/components/home/HomeHero/HomeHero'
+import { HomeShortcuts } from '@/components/home/HomeShortcuts/HomeShortcuts'
+import { LatestPredictions } from '@/components/home/LatestPredictions/LatestPredictions'
+
+// ✅ mantém seu componente já criado
+import { TodayFixtures } from '@/components/home/TodayFixtures/TodayFixtures'
+
+export default function HomePage() {
   return (
-    <>
-      <Header />
-      <Sport />
-    </>
+    <AppShell>
+      <div className={styles.page}>
+        <HomeHero />
+
+        <HomeShortcuts />
+
+        <div className={styles.widgetsGrid}>
+          <TodayFixtures />
+          <LatestPredictions />
+        </div>
+      </div>
+    </AppShell>
   )
 }
-
-export default Home

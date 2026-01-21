@@ -2,7 +2,7 @@ import {
   getCachedPrediction,
   setCachedPrediction,
   type PredictionKeyParams,
-} from '@/services/predictionCache'
+} from '@/services/prediction/predictionCache'
 import { NextResponse } from 'next/server'
 import OpenAI from 'openai'
 

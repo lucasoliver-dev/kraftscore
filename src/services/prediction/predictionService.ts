@@ -3,7 +3,7 @@ import {
   Prediction,
   type PredictionRequest,
   type PredictionSource,
-} from '@/models/prediction'
+} from '@/models/prediction/prediction'
 
 /**
  * Calls the local /api/prediction route and maps the response

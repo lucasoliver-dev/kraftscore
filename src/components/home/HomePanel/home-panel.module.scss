@@ -1,0 +1,47 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4, 16px);
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4, 16px);
+}
+
+.headerText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1, 6px);
+}
+
+.title {
+  margin: 0;
+  font-weight: 800;
+  font-size: var(--font-sm, 14px);
+}
+
+.subtitle {
+  margin: 0;
+  opacity: 0.6;
+  font-size: var(--font-xs, 12px);
+}
+
+.action {
+  font-weight: 700;
+  font-size: var(--font-xs, 12px);
+  color: var(--accent, #ff7a18);
+  text-decoration: none;
+}
+
+.action:hover {
+  text-decoration: underline;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3, 12px);
+}

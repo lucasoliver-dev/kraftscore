@@ -1,0 +1,1 @@
+export { WidgetsSidebar } from './WidgetsSidebar'

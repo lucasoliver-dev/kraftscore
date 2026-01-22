@@ -1,24 +1,27 @@
 .layout {
   display: grid;
+  gap: var(--space-4, 16px);
   align-items: start;
 
   grid-template-columns:
     minmax(16rem, 18rem)
     minmax(0, 1fr)
     minmax(18rem, 26rem);
-}
 
-.page {
-  display: flex;
-  flex-direction: column;
   min-width: 0;
 }
 
-.layout > * {
-  min-width: 0; /* 🔥 impede overflow e “aperto” estranho */
+.colLeft,
+.colCenter,
+.colRight {
+  min-width: 0;
 }
 
-/* 2 colunas */
+.anchor {
+  scroll-margin-top: var(--space-4, 16px);
+}
+
+/* <= 1100px: vira 2 colunas e joga o painel pra baixo */
 @media (max-width: 1100px) {
   .layout {
     grid-template-columns: minmax(16rem, 18rem) minmax(0, 1fr);
@@ -29,7 +32,7 @@
   }
 }
 
-/* mobile 1 coluna */
+/* <= 760px: 1 coluna */
 @media (max-width: 760px) {
   .layout {
     grid-template-columns: 1fr;

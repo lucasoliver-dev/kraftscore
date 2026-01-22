@@ -8,6 +8,7 @@ import Section from '@/components/layout/section/Section'
 import { Button } from '@/components/ui/button'
 
 import styles from './kraftcoin-header.module.scss'
+import { KraftcoinIcon } from '@/components/icons/kraftcoin'
 
 type KraftcoinHeaderProps = {
   buyHref?: string
@@ -42,10 +43,10 @@ export function KraftcoinHeader({ buyHref }: KraftcoinHeaderProps) {
 
             {/* Title block */}
             <div className={styles.titleRow}>
-              <div className={styles.coinMark} aria-hidden>
-                K
-              </div>
-
+              <KraftcoinIcon
+                size="2xl"
+                className={`${styles.coinIcon} drop-shadow-md`}
+              />
               <div className={styles.text}>
                 <h1 className={styles.title}>Kraftcoin</h1>
                 <p className={styles.subtitle}>

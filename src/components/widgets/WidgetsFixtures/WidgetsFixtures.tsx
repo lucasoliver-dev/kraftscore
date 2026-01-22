@@ -1,6 +1,6 @@
 'use client'
 
-import { Search } from 'lucide-react'
+import { Circle, Search } from 'lucide-react'
 import { observer } from 'mobx-react-lite'
 
 import { cn } from '@/lib/utils'
@@ -12,6 +12,7 @@ import Stack from '@/components/layout/stack/Stack'
 import Surface from '@/components/layout/surface/Surface'
 
 import styles from './widgets-fixtures.module.scss'
+import { Button } from '@/components/ui/button'
 
 const TABS: { id: WidgetsFixturesTab; label: string }[] = [
   { id: 'ALL', label: 'ALL' },
@@ -26,6 +27,10 @@ export const WidgetsFixtures = observer(() => {
   const tab = footballWidgetsStore.fixturesTab
   const grouped = footballWidgetsStore.fixturesGrouped
 
+  const handleSelectFixture = (fixtureId: number) => {
+    footballWidgetsStore.setSelectedFixtureId(fixtureId)
+  }
+
   return (
     <Surface>
       <Section>
@@ -33,7 +38,8 @@ export const WidgetsFixtures = observer(() => {
           <div className={styles.topRow}>
             <div className={styles.tabs}>
               {TABS.map(item => (
-                <button
+                <Button
+                  variant="secondaryCta"
                   key={item.id}
                   type="button"
                   className={cn(
@@ -42,8 +48,11 @@ export const WidgetsFixtures = observer(() => {
                   )}
                   onClick={() => footballWidgetsStore.setFixturesTab(item.id)}
                 >
-                  {item.label}
-                </button>
+                  <span className="inline-flex items-center gap-2">
+                    <span className="kbet-dot" data-tab={item.id} />
+                    {item.label}
+                  </span>
+                </Button>
               ))}
             </div>
 
@@ -82,6 +91,7 @@ export const WidgetsFixtures = observer(() => {
                       key={fx.fixture.id}
                       type="button"
                       className={styles.fixture}
+                      onClick={() => handleSelectFixture(fx.fixture.id)}
                     >
                       <span className={styles.fixtureLeft}>
                         <span className={styles.status}>

@@ -20,6 +20,7 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { Bot, Home, LayoutDashboard, Menu, Trophy, Coins } from 'lucide-react'
 
 import styles from './app-shell.module.scss'
+import { UserMenu } from '@/components/Header/UserMenu'
 
 type AppShellProps = {
   children: ReactNode
@@ -147,9 +148,9 @@ export default function AppShell({ children, containerMax }: AppShellProps) {
             </div>
           </div>
 
-          <Avatar className={styles.avatar}>
-            <AvatarFallback>KS</AvatarFallback>
-          </Avatar>
+          <div className={styles.userArea}>
+            <UserMenu signedOutMode="redirect" />
+          </div>
         </header>
 
         {/* Conteúdo */}

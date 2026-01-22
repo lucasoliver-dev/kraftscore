@@ -365,3 +365,28 @@
   background-size: 48px 42px;
   mix-blend-mode: soft-light;
 }
+
+/* Dot padrão */
+.kbet-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+/* Cores por tab */
+.kbet-dot[data-tab='LIVE'] {
+  background: #22c55e;
+}
+
+.kbet-dot[data-tab='FINISHED'] {
+  background: #ef4444;
+}
+
+.kbet-dot[data-tab='SCHEDULED'] {
+  background: #3b82f6;
+}
+
+.kbet-dot[data-tab='ALL'] {
+  background: #f59e0b;
+}

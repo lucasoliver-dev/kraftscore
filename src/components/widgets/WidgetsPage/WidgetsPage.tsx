@@ -1,11 +1,10 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { observer } from 'mobx-react-lite'
 
 import { useStores } from '@/stores/RootStore'
 
-import AppShell from '@/components/layout/appShell/AppShell'
 import { WidgetsFixtures } from '@/components/widgets/WidgetsFixtures'
 import { WidgetsMatchPanel } from '@/components/widgets/WidgetsMatchPanel'
 import { WidgetsSidebar } from '@/components/widgets/WidgetsSidebar'
@@ -21,8 +20,11 @@ function toYYYYMMDD(date: Date): string {
 }
 
 export const WidgetsPage = observer(() => {
-  const { footballStore } = useStores()
+  const { footballStore, footballWidgetsStore } = useStores()
 
+  const matchPanelRef = useRef<HTMLDivElement | null>(null)
+
+  // ✅ load fixtures do dia
   useEffect(() => {
     const today = toYYYYMMDD(new Date())
 
@@ -31,23 +33,36 @@ export const WidgetsPage = observer(() => {
     }
   }, [footballStore])
 
+  // ✅ scroll no mobile ao selecionar fixture
+  useEffect(() => {
+    const fixtureId = footballWidgetsStore.selectedFixtureId
+    if (!fixtureId) return
+
+    if (window.matchMedia('(min-width: 1101px)').matches) return
+
+    requestAnimationFrame(() => {
+      matchPanelRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      })
+    })
+  }, [footballWidgetsStore.selectedFixtureId, footballWidgetsStore])
+
   return (
-    <AppShell>
-      <div className={styles.page}>
-        <div className={styles.layout}>
-          <aside className={styles.colLeft} aria-label="Sidebar">
-            <WidgetsSidebar />
-          </aside>
+    <div className={styles.layout}>
+      <aside className={styles.colLeft} aria-label="Sidebar">
+        <WidgetsSidebar />
+      </aside>
 
-          <main className={styles.colCenter} aria-label="Fixtures list">
-            <WidgetsFixtures />
-          </main>
+      <main className={styles.colCenter} aria-label="Fixtures list">
+        <WidgetsFixtures />
+      </main>
 
-          <aside className={styles.colRight} aria-label="Match panel">
-            <WidgetsMatchPanel />
-          </aside>
-        </div>
-      </div>
-    </AppShell>
+      <aside className={styles.colRight} aria-label="Match panel">
+        {/* ✅ âncora real para scroll */}
+        <div ref={matchPanelRef} id="match-panel" className={styles.anchor} />
+        <WidgetsMatchPanel />
+      </aside>
+    </div>
   )
 })

@@ -1,51 +1,13 @@
 .page {
   display: flex;
   flex-direction: column;
-  /* igual Home */
   padding: var(--space-6, 24px);
-
-  /* MUITO importante pra não estourar layout */
   min-width: 0;
 }
 
-.layout {
-  display: grid;
-  gap: var(--space-4, 16px);
-  align-items: start;
-
-  /* 3 colunas com minmax pra não quebrar/estourar */
-  grid-template-columns:
-    minmax(16rem, 18rem)
-    minmax(0, 1fr)
-    minmax(18rem, 22rem);
-
-  min-width: 0;
-}
-
-.colLeft,
-.colCenter,
-.colRight {
-  min-width: 0;
-}
-
-/* <= 1100px: vira 2 colunas e joga o painel pra baixo */
-@media (max-width: 1100px) {
-  .layout {
-    grid-template-columns: minmax(16rem, 18rem) minmax(0, 1fr);
-  }
-
-  .colRight {
-    grid-column: 1 / -1;
-  }
-}
-
-/* <= 760px: 1 coluna */
+/* padding menor no mobile */
 @media (max-width: 760px) {
   .page {
     padding: var(--space-5, 20px);
-  }
-
-  .layout {
-    grid-template-columns: 1fr;
   }
 }

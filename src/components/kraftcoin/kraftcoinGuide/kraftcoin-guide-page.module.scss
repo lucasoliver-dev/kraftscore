@@ -39,6 +39,78 @@
   line-height: 1.12;
 }
 
+.titleRow {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+/* ✅ Mobile: moeda em cima, texto embaixo */
+@media (max-width: 560px) {
+  .titleRow {
+    flex-direction: column;
+    align-items: center; /* ✅ centraliza moeda e bloco */
+    gap: 10px;
+    text-align: center;
+  }
+
+  .titleBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* ✅ centraliza o texto também */
+    text-align: center;
+  }
+
+  .coinSpin {
+    align-self: center; /* ✅ moeda bem no meio */
+  }
+
+  .subtitle {
+    margin-left: auto;
+    margin-right: auto; /* ✅ mantém parágrafo central */
+  }
+}
+
+.titleBlock {
+  min-width: 0;
+}
+
+.coinSpin {
+  perspective: 900px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.coinIcon {
+  will-change: transform;
+  transform-style: preserve-3d;
+  animation: kraftcoin-spin 3.6s linear infinite;
+
+  filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.35))
+    drop-shadow(-3px 0 0 rgba(249, 115, 22, 0.6))
+    drop-shadow(-3px 0 0 rgba(249, 115, 22, 0.35))
+    drop-shadow(3px 0 0 rgba(0, 0, 0, 0.28))
+    drop-shadow(6px 0 0 rgba(0, 0, 0, 0.15));
+}
+
+/* gira no eixo (3D) */
+@keyframes kraftcoin-spin {
+  0% {
+    transform: rotateY(0deg) rotateZ(-6deg);
+  }
+  100% {
+    transform: rotateY(360deg) rotateZ(-6deg);
+  }
+}
+
+/* respeita acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+  .coinIcon {
+    animation: none;
+  }
+}
+
 .subtitle {
   margin: 0;
   max-width: 70ch;

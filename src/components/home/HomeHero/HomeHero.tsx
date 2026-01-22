@@ -24,9 +24,6 @@ export function HomeHero() {
       <Surface variant="hero" glow="strong" className={styles.surface}>
         <Section density="default">
           <div className={styles.hero}>
-            <div className={styles.userMenu}>
-              <UserMenu signedOutMode="redirect" />
-            </div>
             <div className={styles.badgeRow}>
               <span className={styles.badge}>
                 <Sparkles size={14} />

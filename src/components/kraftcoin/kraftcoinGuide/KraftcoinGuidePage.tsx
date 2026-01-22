@@ -24,6 +24,7 @@ import {
 } from 'lucide-react'
 
 import styles from './kraftcoin-guide-page.module.scss'
+import { KraftcoinIcon } from '@/components/icons'
 
 export function KraftcoinGuidePage() {
   const pumpfunUrl = '#'
@@ -53,13 +54,21 @@ export function KraftcoinGuidePage() {
             </div>
 
             <Stack className={styles.heroText}>
-              <h1 className={styles.title}>Entenda a Kraftcoin</h1>
+              <div className={styles.titleRow}>
+                <span className={styles.coinSpin} aria-hidden="true">
+                  <KraftcoinIcon size="2xl" className={styles.coinIcon} />
+                </span>
 
-              <p className={styles.subtitle}>
-                A Kraftcoin é a memecoin oficial do KraftScore — criada para
-                fortalecer a comunidade e futuramente liberar benefícios dentro
-                do app.
-              </p>
+                <div className={styles.titleBlock}>
+                  <h1 className={styles.title}>Entenda a Kraftcoin</h1>
+
+                  <p className={styles.subtitle}>
+                    A Kraftcoin é a memecoin oficial do KraftScore — criada para
+                    fortalecer a comunidade e futuramente liberar benefícios
+                    dentro do app.
+                  </p>
+                </div>
+              </div>
             </Stack>
 
             <div className={styles.actions}>

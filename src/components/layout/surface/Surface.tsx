@@ -3,27 +3,31 @@
 import type { ReactNode } from 'react'
 import { Card } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
-import styles from './surface.module.scss'
 
-type SurfaceGlow = 'none' | 'soft' | 'strong'
+export type SurfaceVariant = 'panel' | 'hero' | 'sidebar' | 'header'
+export type SurfaceGlow = 'none' | 'soft' | 'strong'
+
+type SurfaceProps = {
+  children: ReactNode
+  className?: string
+  variant?: SurfaceVariant
+  glow?: SurfaceGlow
+  hover?: boolean
+}
 
 export default function Surface({
   children,
   className,
+  variant = 'panel',
   glow = 'soft',
-}: {
-  children: ReactNode
-  className?: string
-  glow?: SurfaceGlow
-}) {
+  hover = true,
+}: SurfaceProps) {
   return (
     <Card
-      className={cn(
-        'kbet-panel', // ✅ aplica seu design system global
-        styles.surface,
-        glow !== 'none' && styles[`glow_${glow}`],
-        className
-      )}
+      className={cn('kbet-surface', className)}
+      data-variant={variant}
+      data-glow={glow}
+      data-hover={hover ? 'true' : 'false'}
     >
       {children}
     </Card>

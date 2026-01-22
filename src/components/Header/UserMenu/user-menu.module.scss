@@ -1,0 +1,84 @@
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+
+.authButtons {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* ==========================================================
+  Clerk styles (applied via appearance.elements)
+========================================================== */
+
+.userAvatarBox {
+  height: 2.25rem !important;
+  width: 2.25rem !important;
+
+  border-radius: 9999px !important;
+  border: 1px solid hsl(var(--brand) / 0.65) !important;
+  box-shadow: var(--glow-orange) !important;
+}
+
+.userButtonTrigger {
+  border-radius: 9999px !important;
+  outline: none !important;
+}
+
+/* Popover card */
+.popoverCard {
+  border-radius: var(--radius-md) !important;
+  border: 1px solid hsl(var(--brand) / 0.3) !important;
+
+  background: var(--glass-bg-strong) !important;
+  backdrop-filter: blur(var(--glass-blur)) !important;
+  color: hsl(var(--foreground)) !important;
+
+  box-shadow: var(--shadow-card), var(--glow-orange) !important;
+}
+
+/* Popover texts */
+.popoverTitle {
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  color: hsl(var(--foreground)) !important;
+}
+
+.popoverSubtitle {
+  font-size: 0.75rem !important;
+  color: hsl(var(--muted-foreground)) !important;
+}
+
+/* Popover actions */
+.popoverAction {
+  display: flex !important;
+  gap: var(--space-2) !important;
+  padding: 0.45rem 0.6rem !important;
+
+  border-radius: var(--radius-sm) !important;
+  font-size: 0.75rem !important;
+
+  color: hsl(var(--foreground)) !important;
+  transition: background 150ms ease !important;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.06) !important;
+  }
+}
+
+.popoverActionIcon {
+  color: hsl(var(--muted-foreground)) !important;
+}
+
+.popoverActionText {
+  font-size: 0.75rem !important;
+  color: hsl(var(--foreground)) !important;
+}
+
+.popoverFooter {
+  display: none !important;
+}

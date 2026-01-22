@@ -80,13 +80,24 @@
 
 /* botão */
 .actions {
-  margin-top: 6px;
+  margin-top: var(--space-4, 16px);
+
+  display: flex;
+  gap: var(--space-3, 12px);
+  align-items: center;
+  flex-wrap: wrap;
+
+  :global(a),
+  :global(button) {
+    width: 100%;
+  }
 }
 
-/* Responsivo */
-@media (min-width: 768px) {
-  .fields {
-    max-width: 520px;
-    margin: 0 auto;
+@media (min-width: 520px) {
+  .actions {
+    :global(a),
+    :global(button) {
+      width: auto;
+    }
   }
 }

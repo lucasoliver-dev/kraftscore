@@ -14,6 +14,8 @@ import {
 } from '@/components/ui/select'
 import styles from './sport-form.module.scss'
 import 'react-datepicker/dist/react-datepicker.css'
+import { ArrowLeft } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 
 /**
  * Values handled by the sport form.
@@ -53,6 +55,7 @@ const formatDateYYYYMMDD = (date: Date) => {
  * and the desired date to search for fixtures.
  */
 const SportForm = ({ onSubmitForm }: SportFormProps) => {
+  const router = useRouter()
   const [values, setValues] = useState<SportFormValues>({
     date: new Date(),
     sport: '',
@@ -158,6 +161,15 @@ const SportForm = ({ onSubmitForm }: SportFormProps) => {
 
         {/* Action */}
         <div className={styles.actions}>
+          <Button
+            type="button"
+            variant="secondaryCta"
+            size="lg"
+            onClick={() => router.push('/')}
+          >
+            <ArrowLeft size={16} />
+            Voltar
+          </Button>
           <Button
             type="submit"
             disabled={isSubmitting}

@@ -1,8 +1,15 @@
 'use client'
 
 import type { ReactNode } from 'react'
+
+import { cn } from '@/lib/utils'
 import styles from './stack.module.scss'
 
-export default function Stack({ children }: { children: ReactNode }) {
-  return <div className={styles.stack}>{children}</div>
+type StackProps = {
+  children: ReactNode
+  className?: string
+}
+
+export default function Stack({ children, className }: StackProps) {
+  return <div className={cn(styles.stack, className)}>{children}</div>
 }

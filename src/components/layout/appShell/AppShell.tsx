@@ -4,6 +4,9 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useMemo, type ReactNode } from 'react'
 
+import { cn } from '@/lib/utils'
+import Surface from '@/components/layout/surface/Surface'
+
 import { Button } from '@/components/ui/button'
 import {
   Sheet,
@@ -14,12 +17,13 @@ import {
 } from '@/components/ui/sheet'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 
-import { Bot, Home, LayoutDashboard, Menu, Trophy } from 'lucide-react'
+import { Bot, Home, LayoutDashboard, Menu, Trophy, Coins } from 'lucide-react'
 
 import styles from './app-shell.module.scss'
 
 type AppShellProps = {
   children: ReactNode
+  containerMax?: string
 }
 
 type NavItem = {
@@ -28,7 +32,7 @@ type NavItem = {
   label: string
 }
 
-export default function AppShell({ children }: AppShellProps) {
+export default function AppShell({ children, containerMax }: AppShellProps) {
   const pathname = usePathname()
 
   const navItems: NavItem[] = useMemo(() => {
@@ -41,6 +45,7 @@ export default function AppShell({ children }: AppShellProps) {
         label: 'Widgets',
         icon: <LayoutDashboard size={18} />,
       },
+      { href: '/kraftcoin', label: 'Kraftcoin', icon: <Coins size={18} /> },
     ]
   }, [])
 
@@ -53,7 +58,7 @@ export default function AppShell({ children }: AppShellProps) {
     <div className={styles.shell}>
       {/* Sidebar desktop */}
       <aside className={styles.sidebar}>
-        <div className={styles.sidebarPanel}>
+        <Surface variant="sidebar" glow="none" className={styles.sidebarPanel}>
           <div className={styles.brand}>
             <div className={styles.brandIcon}>KS</div>
 
@@ -88,13 +93,13 @@ export default function AppShell({ children }: AppShellProps) {
               insight premium.
             </p>
           </div>
-        </div>
+        </Surface>
       </aside>
 
       {/* Área principal */}
       <div className={styles.main}>
         {/* Topbar mobile */}
-        <header className={styles.mobileTopbar}>
+        <header className={cn('kbet-header', styles.mobileTopbar)}>
           <Sheet>
             <SheetTrigger asChild>
               <Button
@@ -106,7 +111,10 @@ export default function AppShell({ children }: AppShellProps) {
               </Button>
             </SheetTrigger>
 
-            <SheetContent side="left" className={styles.mobileSheet}>
+            <SheetContent
+              side="left"
+              className={cn('kbet-sheet', styles.mobileSheet)}
+            >
               <SheetHeader>
                 <SheetTitle className={styles.sheetTitle}>Menu</SheetTitle>
               </SheetHeader>
@@ -146,11 +154,22 @@ export default function AppShell({ children }: AppShellProps) {
 
         {/* Conteúdo */}
         <main className={styles.content}>
-          <div className={styles.container}>{children}</div>
+          <div
+            className={styles.container}
+            style={
+              containerMax
+                ? ({
+                    ['--container-max' as any]: containerMax,
+                  } as React.CSSProperties)
+                : undefined
+            }
+          >
+            {children}
+          </div>
         </main>
 
         {/* Bottom nav mobile */}
-        <nav className={styles.bottomNav}>
+        <nav className={cn('kbet-header', styles.bottomNav)}>
           {navItems.map(item => {
             const active = isActive(item.href)
 

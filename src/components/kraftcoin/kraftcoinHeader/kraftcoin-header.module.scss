@@ -1,0 +1,139 @@
+.grid {
+  display: grid;
+  gap: var(--space-6, 24px);
+  align-items: start;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4, 16px);
+  min-width: 0;
+}
+
+.right {
+  min-width: 0;
+}
+
+/* chips row */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2, 8px);
+}
+
+.chip {
+  border-radius: 999px;
+  height: 32px;
+  padding: 0 12px;
+  font-weight: 900;
+  font-size: 12px;
+}
+
+/* Title */
+.titleRow {
+  display: flex;
+  gap: var(--space-4, 16px);
+  align-items: flex-start;
+}
+
+.coinMark {
+  width: 52px;
+  height: 52px;
+  border-radius: 18px;
+
+  display: grid;
+  place-items: center;
+
+  font-weight: 950;
+  color: hsl(var(--brand));
+  background: rgba(249, 115, 22, 0.12);
+  border: 1px solid rgba(249, 115, 22, 0.25);
+}
+
+.title {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1.1;
+  font-weight: 950;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 70ch;
+}
+
+/* CTAs */
+.actions {
+  display: flex;
+  gap: var(--space-3, 12px);
+  flex-wrap: wrap;
+}
+
+.primaryCta,
+.secondaryCta {
+  border-radius: 999px;
+}
+
+/* Spec card (apenas layout interno) */
+.specCard {
+  padding: var(--space-5, 20px);
+  border-radius: 22px;
+}
+
+.specTitle {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.specList {
+  margin-top: var(--space-4, 16px);
+  display: grid;
+  gap: 10px;
+}
+
+.specItem {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+
+  span {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  b {
+    font-size: 12px;
+    font-weight: 900;
+  }
+}
+
+.disclaimer {
+  margin: 0;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* Desktop 2 colunas */
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+  }
+}
+
+/* Mobile: CTA empilha */
+@media (max-width: 720px) {
+  .actions {
+    flex-direction: column;
+  }
+
+  .primaryCta,
+  .secondaryCta {
+    width: 100%;
+  }
+}

@@ -8,7 +8,16 @@
     "start": "next start",
     "lint": "next lint",
     "type-check": "tsc",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,json,css,scss,md}": [
+      "prettier --write --ignore-unknown"
+    ],
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix"
+    ]
   },
   "dependencies": {
     "@clerk/nextjs": "^6.36.8",
@@ -50,6 +59,8 @@
     "eslint-config-next": "14.2.25",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "prettier": "^2.8.8",
     "sass": "^1.97.2",
     "typescript": "5.4.5"

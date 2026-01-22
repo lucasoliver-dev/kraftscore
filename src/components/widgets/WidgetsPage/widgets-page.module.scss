@@ -1,28 +1,27 @@
-.page {
-  width: 100%;
-  max-width: var(--container-max);
-  margin: 0 auto;
-  padding: var(--page-padding-y) var(--page-padding-x);
-}
-
-/* ✅ Layout 3 colunas no desktop */
 .layout {
   display: grid;
-  grid-template-columns: 280px 1fr 420px;
-  gap: var(--space-4);
   align-items: start;
+
+  grid-template-columns:
+    minmax(16rem, 18rem)
+    minmax(0, 1fr)
+    minmax(18rem, 26rem);
 }
 
-.colLeft,
-.colCenter,
-.colRight {
-  min-height: calc(100vh - 140px);
+.page {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 
-/* ✅ Responsivo: cai para 2 colunas */
+.layout > * {
+  min-width: 0; /* 🔥 impede overflow e “aperto” estranho */
+}
+
+/* 2 colunas */
 @media (max-width: 1100px) {
   .layout {
-    grid-template-columns: 260px 1fr;
+    grid-template-columns: minmax(16rem, 18rem) minmax(0, 1fr);
   }
 
   .colRight {
@@ -30,7 +29,7 @@
   }
 }
 
-/* ✅ Mobile: 1 coluna */
+/* mobile 1 coluna */
 @media (max-width: 760px) {
   .layout {
     grid-template-columns: 1fr;

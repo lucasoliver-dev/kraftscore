@@ -18,6 +18,109 @@
   Design System (classes globais para evitar repetição)
 ========================================================== */
 @layer components {
+  /* =========================
+    Surface (Primitivo oficial)
+  ========================= */
+
+  .kbet-surface {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--glass-border);
+
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+
+    transition: box-shadow 180ms ease, transform 180ms ease;
+  }
+
+  /* Glow */
+  .kbet-surface[data-glow='none'] {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .kbet-surface[data-glow='soft'] {
+    box-shadow: var(--shadow-soft), var(--glow-orange);
+  }
+
+  .kbet-surface[data-glow='strong'] {
+    box-shadow: var(--shadow-card), var(--glow-orange-strong);
+  }
+
+  /* Hover */
+  @media (hover: hover) {
+    .kbet-surface[data-hover='true']:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-card), var(--glow-orange-strong);
+    }
+  }
+
+  /* Variants */
+  .kbet-surface[data-variant='panel'] {
+    /* padrão já é panel */
+  }
+
+  .kbet-surface[data-variant='sidebar'] {
+    /* sidebar é panel também, mas aqui você pode ajustar se quiser */
+  }
+
+  .kbet-surface[data-variant='header'] {
+    background: var(--header-bg);
+    border: 1px solid var(--header-border);
+    backdrop-filter: blur(var(--header-blur));
+    box-shadow: none;
+  }
+
+  /* ✅ HERO: o gradiente/glow fica aqui (não no HomeHero) */
+  .kbet-surface[data-variant='hero'] {
+    background: var(--glass-bg-strong);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .kbet-surface[data-variant='hero']::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+
+    background: radial-gradient(
+        620px circle at 18% 28%,
+        rgba(249, 115, 22, 0.18),
+        transparent 60%
+      ),
+      radial-gradient(
+        520px circle at 82% 35%,
+        rgba(249, 115, 22, 0.1),
+        transparent 65%
+      ),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.22));
+
+    opacity: 0.95;
+  }
+
+  .kbet-surface[data-variant='hero']::after {
+    content: '';
+    position: absolute;
+    left: 22px;
+    right: 22px;
+    top: 10px;
+    height: 1px;
+    border-radius: 999px;
+    pointer-events: none;
+
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(249, 115, 22, 0.4),
+      transparent
+    );
+
+    opacity: 0.28;
+  }
+
   /* Container padrão (centralizado + max width) */
   .kbet-container {
     width: 100%;
@@ -35,16 +138,23 @@
 
   /* Card / Panel glass padrão */
   .kbet-panel {
-    /* mantém tudo que já tem */
     box-shadow: var(--shadow-soft), var(--glow-orange);
     transition: box-shadow 180ms ease, transform 180ms ease;
   }
 
+  /* ✅ hover só quando o componente permitir */
   @media (hover: hover) {
-    .kbet-panel:hover {
+    .kbet-panel[data-interactive='true']:hover {
       box-shadow: var(--shadow-soft), var(--glow-orange-strong);
       transform: translateY(-1px);
     }
+  }
+
+  /* ✅ sheet padrão do app (mobile menu) */
+  .kbet-sheet {
+    background: var(--glass-bg-strong);
+    border-right: 1px solid var(--glass-border);
+    backdrop-filter: blur(var(--glass-blur));
   }
 
   /* Header padrão */
@@ -153,9 +263,11 @@
   0% {
     transform: translate3d(0, 0, 0) rotate(0deg);
   }
+
   50% {
     transform: translate3d(18px, -24px, 0) rotate(6deg);
   }
+
   100% {
     transform: translate3d(0, 0, 0) rotate(0deg);
   }
@@ -165,9 +277,11 @@
   0% {
     transform: translate3d(0, 0, 0) rotate(0deg);
   }
+
   50% {
     transform: translate3d(-24px, 30px, 0) rotate(-4deg);
   }
+
   100% {
     transform: translate3d(0, 0, 0) rotate(0deg);
   }

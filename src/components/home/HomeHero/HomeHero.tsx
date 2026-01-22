@@ -2,11 +2,14 @@
 
 import Link from 'next/link'
 import { useUser } from '@clerk/nextjs'
-import { Bot, CalendarDays, Sparkles, TrendingUp } from 'lucide-react'
+import { Bot, CalendarDays, Crown, Sparkles, TrendingUp } from 'lucide-react'
 
 import Surface from '@/components/layout/surface/Surface'
 import Section from '@/components/layout/section/Section'
+import { Button } from '@/components/ui/button'
+
 import styles from './home-hero.module.scss'
+import { UserMenu } from '@/components/Header/UserMenu/UserMenu'
 
 function getDisplayName(user: any) {
   return user?.firstName || user?.username || user?.fullName || 'Craque'
@@ -14,17 +17,16 @@ function getDisplayName(user: any) {
 
 export function HomeHero() {
   const { user, isLoaded } = useUser()
-
   const name = isLoaded ? getDisplayName(user) : '...'
 
   return (
-    <div className={styles.heroWrap}>
-      <Surface glow="strong" className={styles.heroSurface}>
+    <div className={styles.wrap}>
+      <Surface variant="hero" glow="strong" className={styles.surface}>
         <Section density="default">
           <div className={styles.hero}>
-            {/* Glow decorativo */}
-            <div className={styles.heroGlow} aria-hidden />
-
+            <div className={styles.userMenu}>
+              <UserMenu signedOutMode="redirect" />
+            </div>
             <div className={styles.badgeRow}>
               <span className={styles.badge}>
                 <Sparkles size={14} />
@@ -40,7 +42,7 @@ export function HomeHero() {
             <div className={styles.text}>
               <h1 className={styles.title}>
                 Bem-vindo de volta, <span className={styles.name}>{name}</span>{' '}
-                👑
+                <Crown className={styles.crown} size={48} />
               </h1>
 
               <p className={styles.subtitle}>
@@ -48,7 +50,6 @@ export function HomeHero() {
               </p>
             </div>
 
-            {/* Badges rápidos pra não ficar "pálido" */}
             <div className={styles.pills}>
               <span className={styles.pill}>
                 <CalendarDays size={14} />
@@ -65,14 +66,20 @@ export function HomeHero() {
             </div>
 
             <div className={styles.actions}>
-              <Link href="/fixtures" className={styles.primaryButton}>
-                Ver jogos de hoje
-              </Link>
+              <Button asChild className={styles.primaryButton}>
+                <Link href="/fixtures">Ver jogos de hoje</Link>
+              </Button>
 
-              <Link href="/predictions" className={styles.secondaryButton}>
-                <Bot size={16} />
-                Fazer análise com IA
-              </Link>
+              <Button
+                asChild
+                variant="secondary"
+                className={styles.secondaryButton}
+              >
+                <Link href="/predictions" className={styles.secondaryInner}>
+                  <Bot size={16} />
+                  Fazer análise com IA
+                </Link>
+              </Button>
             </div>
           </div>
         </Section>

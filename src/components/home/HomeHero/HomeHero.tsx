@@ -9,15 +9,10 @@ import Section from '@/components/layout/section/Section'
 import { Button } from '@/components/ui/button'
 
 import styles from './home-hero.module.scss'
-import { UserMenu } from '@/components/Header/UserMenu/UserMenu'
-
-function getDisplayName(user: any) {
-  return user?.firstName || user?.username || user?.fullName || 'Craque'
-}
+import { useDisplayName } from '@/hooks/ui/useDisplayName'
 
 export function HomeHero() {
-  const { user, isLoaded } = useUser()
-  const name = isLoaded ? getDisplayName(user) : '...'
+  const { name } = useDisplayName()
 
   return (
     <div className={styles.wrap}>

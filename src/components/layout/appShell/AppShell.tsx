@@ -17,7 +17,15 @@ import {
 } from '@/components/ui/sheet'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 
-import { Bot, Home, LayoutDashboard, Menu, Trophy, Coins } from 'lucide-react'
+import {
+  Bot,
+  Home,
+  LayoutDashboard,
+  Menu,
+  Trophy,
+  Coins,
+  Star,
+} from 'lucide-react'
 
 import styles from './app-shell.module.scss'
 import { UserMenu } from '@/components/Header/UserMenu'
@@ -38,7 +46,7 @@ export default function AppShell({ children, containerMax }: AppShellProps) {
 
   const navItems: NavItem[] = useMemo(() => {
     return [
-      { href: '/', label: 'Home', icon: <Home size={18} /> },
+      { href: '/home', label: 'Home', icon: <Home size={18} /> },
       { href: '/fixtures', label: 'Jogos', icon: <Trophy size={18} /> },
       { href: '/predictions', label: 'Análise IA', icon: <Bot size={18} /> },
       {
@@ -51,7 +59,7 @@ export default function AppShell({ children, containerMax }: AppShellProps) {
   }, [])
 
   const isActive = (href: string) => {
-    if (href === '/') return pathname === '/'
+    if (href === '/home') return pathname === '/home'
     return pathname?.startsWith(href)
   }
 
@@ -60,6 +68,9 @@ export default function AppShell({ children, containerMax }: AppShellProps) {
       {/* Sidebar desktop */}
       <aside className={styles.sidebar}>
         <Surface variant="sidebar" glow="none" className={styles.sidebarPanel}>
+          <div className={styles.sidebarUserArea}>
+            <UserMenu className={styles.sidebarUserMenu} />
+          </div>
           <div className={styles.brand}>
             <div className={styles.brandIcon}>KS</div>
 
@@ -149,7 +160,7 @@ export default function AppShell({ children, containerMax }: AppShellProps) {
           </div>
 
           <div className={styles.userArea}>
-            <UserMenu signedOutMode="redirect" />
+            <UserMenu />
           </div>
         </header>
 

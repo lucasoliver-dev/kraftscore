@@ -1,19 +1,15 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 
-const isPublicRoute = createRouteMatcher(['/sign-in(.*)', '/sign-up(.*)'])
+const isProtectedRoute = createRouteMatcher(['/insights(.*)'])
 
 export default clerkMiddleware(async (auth, req) => {
-  if (isPublicRoute(req)) return
-
-  // Se não estiver logado, o Clerk redireciona automaticamente pro sign-in
+  if (!isProtectedRoute(req)) return
   await auth.protect()
 })
 
 export const config = {
   matcher: [
-    // Ignora arquivos estáticos e internals do Next
     '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
-    // Sempre roda em rotas de API
     '/(api|trpc)(.*)',
   ],
 }

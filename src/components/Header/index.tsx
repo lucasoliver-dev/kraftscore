@@ -23,7 +23,7 @@ const Header = () => (
       </div>
 
       <div className={styles.userArea}>
-        <UserMenu signedOutMode="redirect" />
+        <UserMenu />
       </div>
     </div>
   </header>

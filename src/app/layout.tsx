@@ -4,6 +4,7 @@ import { ThemeProvider } from '@/providers/theme-providers'
 import { StoreProvider } from '@/stores/RootStore'
 import './globals.css'
 import AppBackground from '@/components/layout/AppBackground'
+import { satoshi, spaceGrotesk } from '@/styles/fonts'
 
 export const metadata: Metadata = {
   description: 'Sports betting and AI analysis application',
@@ -24,7 +25,9 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="pt-BR" suppressHydrationWarning>
-        <body className="relative min-h-screen antialiased">
+        <body
+          className={`${satoshi.variable} ${spaceGrotesk.variable} relative min-h-screen antialiased`}
+        >
           <AppBackground />
           <ThemeProvider>
             <div className="relative z-10">

@@ -18,13 +18,9 @@ import styles from './user-menu.module.scss'
 
 export type UserMenuProps = {
   className?: string
-  signedOutMode?: 'redirect' | 'buttons'
 }
 
-export function UserMenu({
-  className,
-  signedOutMode = 'buttons',
-}: UserMenuProps) {
+export function UserMenu({ className }: UserMenuProps) {
   return (
     <div className={cn(styles.root, className)}>
       <SignedIn>
@@ -53,25 +49,21 @@ export function UserMenu({
       </SignedIn>
 
       <SignedOut>
-        {signedOutMode === 'redirect' ? (
-          <RedirectToSignIn />
-        ) : (
-          <div className={styles.authButtons}>
-            <SignInButton mode="modal">
-              <Button variant="secondaryCta" size="sm">
-                <LogIn size={14} />
-                Entrar
-              </Button>
-            </SignInButton>
+        <div className={styles.authButtons}>
+          <SignInButton mode="modal">
+            <Button variant="secondaryCta" size="sm">
+              <LogIn size={14} />
+              Entrar
+            </Button>
+          </SignInButton>
 
-            <SignUpButton mode="modal">
-              <Button variant="neon" size="sm">
-                <UserPlus size={14} />
-                Criar conta
-              </Button>
-            </SignUpButton>
-          </div>
-        )}
+          <SignUpButton mode="modal">
+            <Button variant="neon" size="sm">
+              <UserPlus size={14} />
+              Criar conta
+            </Button>
+          </SignUpButton>
+        </div>
       </SignedOut>
     </div>
   )

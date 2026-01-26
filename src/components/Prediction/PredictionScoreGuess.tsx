@@ -33,11 +33,11 @@ const PredictionScoreGuess = ({
     <div className="flex items-center justify-center gap-6">
       <TeamLogoBlock name={teamHome} logo={teamHomeLogo} />
 
-      <div className="flex flex-col items-center gap-1">
-        <span className="text-[10px] uppercase tracking-wide text-zinc-500">
+      <div className="flex flex-col items-center gap-2">
+        <span className="whitespace-nowrap text-[10px] uppercase tracking-wide text-zinc-500">
           Placar sugerido
         </span>
-        <div className="rounded-md border border-orange-500/60 bg-zinc-900 px-4 py-2 text-2xl font-semibold tracking-widest text-orange-400">
+        <div className="rounded-md border border-orange-500/60 bg-zinc-900 px-4 py-2 text-2xl font-semibold text-orange-400">
           {guess.homeGoals} <span className="text-zinc-500">x</span>{' '}
           {guess.awayGoals}
         </div>

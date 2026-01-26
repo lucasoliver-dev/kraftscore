@@ -2,7 +2,7 @@
 
 import type { PaginationResult } from '@/hooks/usePagination'
 import type { Fixture as FixtureModel } from '@/models/football'
-import FixtureCard from './FixtureCard'
+import FixtureCard from './FixtureCard/FixtureCard'
 import PredictionInlineSummary from '@/components/Prediction/PredictionInlineSummary'
 import type { PredictionStore } from '@/stores/PredictionStore'
 

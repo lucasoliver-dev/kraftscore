@@ -6,6 +6,12 @@
 
 :root {
   /* ------------------------------
+    Typography (Fonts)
+  ------------------------------ */
+  --font-ui: var(--font-satoshi);
+  --font-display: var(--font-space);
+
+  /* ------------------------------
     Colors (Light)
     (shadcn default)
   ------------------------------ */
@@ -48,6 +54,9 @@
   ------------------------------ */
   --brand: 24 95% 53%; /* hsl(24 95% 53%) ~ orange-500 */
   --brand-foreground: 0 0% 6%;
+  --font-ui: var(--font-satoshi), sans-serif;
+  --font-display: var(--font-space);
+  --font-ui: var(--font-satoshi);
 
   /* ------------------------------
     Radius (Design System)
@@ -64,12 +73,15 @@
   --page-padding-y: 20px;
 
   /* Spacing (opcional, útil pra SCSS) */
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 20px;
-  --space-6: 24px;
+  --space-1: 0.25rem; /* 4px */
+  --space-2: 0.5rem; /* 8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem; /* 16px */
+  --space-5: 1.25rem; /* 20px */
+  --space-6: 1.5rem; /* 24px */
+  --space-7: 2rem; /* 32px */
+  --space-8: 2.5rem; /* 40px */
+  --space-9: 3rem; /* 48px */
 
   /* ------------------------------
     Shadows
@@ -117,6 +129,7 @@
   --header-bg: rgba(255, 255, 255, 0.72);
   --header-border: hsl(var(--border));
   --header-blur: 10px;
+  --font-brand: rgba(255, 255, 255, 0.868);
 }
 
 /* ==========================================================

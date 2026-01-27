@@ -1,3 +1,5 @@
 export * from './api-football/footballService'
 export * from './prediction/predictionCache'
 export * from './prediction/predictionService'
+export * from './api-football/seasons'
+export * from './api-football/statistics'

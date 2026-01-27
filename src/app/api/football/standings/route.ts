@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { apiFootballFetchJson } from '../_lib/apiFootballClient'
 
 export const dynamic = 'force-dynamic'
 
@@ -21,16 +22,13 @@ export async function GET(req: NextRequest) {
       )
     }
 
-    const url = new URL('/api/football/standings', req.url)
-    url.searchParams.set('league', league)
-    url.searchParams.set('season', season)
-
-    const response = await fetch(url.toString(), { cache: 'no-store' })
-    const data = await response.json().catch(() => null)
-
-    return NextResponse.json(data, { status: response.status })
+    return apiFootballFetchJson(
+      '/standings',
+      req.nextUrl.searchParams,
+      'no-store'
+    )
   } catch (error: unknown) {
-    console.error('[fixtures/standings alias] error:', error)
+    console.error('[standings] error:', error)
 
     return NextResponse.json(
       { error: 'Erro interno ao buscar standings.' },

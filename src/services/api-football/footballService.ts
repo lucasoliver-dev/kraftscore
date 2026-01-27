@@ -1,4 +1,4 @@
-import axios from 'axios'
+import { apiFootballClient } from './client'
 import {
   Fixture,
   Standings,
@@ -15,12 +15,11 @@ import {
  * @returns A promise that resolves to a list of Fixture domain models.
  */
 export async function fetchFixturesByDate(date: string): Promise<Fixture[]> {
-  const { data } = await axios.get<ApiFootballResponse<FixtureSource>>(
-    '/api/football/fixtures',
-    {
-      params: { date },
-    }
-  )
+  const { data } = await apiFootballClient.get<
+    ApiFootballResponse<FixtureSource>
+  >('/fixtures', {
+    params: { date },
+  })
 
   return Fixture.specialize(data)
 }
@@ -36,12 +35,11 @@ export async function fetchStandingsByLeague(
   leagueId: number,
   season: number
 ): Promise<Standings> {
-  const { data } = await axios.get<ApiFootballResponse<StandingsSource>>(
-    '/api/football/standings',
-    {
-      params: { league: leagueId, season },
-    }
-  )
+  const { data } = await apiFootballClient.get<
+    ApiFootballResponse<StandingsSource>
+  >('/standings', {
+    params: { league: leagueId, season },
+  })
 
   return Standings.specialize(data)
 }

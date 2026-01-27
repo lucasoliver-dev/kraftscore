@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { apiFootballFetchJson } from '@/app/api/football/_lib'
 
 export const dynamic = 'force-dynamic'
 
@@ -6,6 +7,7 @@ export async function GET(req: NextRequest) {
   try {
     const league = req.nextUrl.searchParams.get('league')
     const season = req.nextUrl.searchParams.get('season')
+    const team = req.nextUrl.searchParams.get('team')
 
     if (!league) {
       return NextResponse.json(
@@ -21,19 +23,23 @@ export async function GET(req: NextRequest) {
       )
     }
 
-    const url = new URL('/api/football/standings', req.url)
-    url.searchParams.set('league', league)
-    url.searchParams.set('season', season)
+    if (!team) {
+      return NextResponse.json(
+        { error: 'Parâmetro obrigatório ausente: team' },
+        { status: 400 }
+      )
+    }
 
-    const response = await fetch(url.toString(), { cache: 'no-store' })
-    const data = await response.json().catch(() => null)
-
-    return NextResponse.json(data, { status: response.status })
+    return apiFootballFetchJson(
+      '/teams/statistics',
+      req.nextUrl.searchParams,
+      'no-store'
+    )
   } catch (error: unknown) {
-    console.error('[fixtures/standings alias] error:', error)
+    console.error('[teams/statistics] error:', error)
 
     return NextResponse.json(
-      { error: 'Erro interno ao buscar standings.' },
+      { error: 'Erro interno ao buscar team statistics.' },
       { status: 500 }
     )
   }

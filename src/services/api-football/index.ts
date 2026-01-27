@@ -1,1 +1,6 @@
 export * from './footballService'
+export * from './client'
+export * from './seasons'
+export * from './statistics'
+export * from './teams'
+export * from './leagues'

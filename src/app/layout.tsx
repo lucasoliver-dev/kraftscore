@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     siteName: 'KraftScore Insights',
     images: [
       {
-        url: '/public/images/ksInsights-bg.png',
+        url: '/og/preview.jpg',
         width: 1200,
         height: 630,
         alt: 'KraftScore Insights',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'KraftScore Insights',
     description: 'Sports betting and AI analysis application',
-    images: ['/public/images/ksInsights-bg.png'],
+    images: ['/og/preview.jpg'],
   },
 }
 
